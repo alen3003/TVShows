@@ -19,6 +19,13 @@
 		B40C5A5C28226CDA0061E512 /* ViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A5B28226CDA0061E512 /* ViewInterface.swift */; };
 		B40C5A5E28226D200061E512 /* PresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A5D28226D200061E512 /* PresenterInterface.swift */; };
 		B40C5A6028226D2C0061E512 /* InteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A5F28226D2C0061E512 /* InteractorInterface.swift */; };
+		B40C5A6428228DF00061E512 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A6328228DF00061E512 /* LoginView.swift */; };
+		B40C5A67282291FB0061E512 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A65282291FB0061E512 /* UIView+Constraints.swift */; };
+		B40C5A68282291FB0061E512 /* UIView+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A66282291FB0061E512 /* UIView+Corners.swift */; };
+		B40C5A6A282294870061E512 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A69282294870061E512 /* CustomView.swift */; };
+		B40C5A78282296470061E512 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A77282296470061E512 /* UIImage+Extensions.swift */; };
+		B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A7A2822965A0061E512 /* BundleImage.swift */; };
+		B40C5A7D28229ACD0061E512 /* UIEdgeInsets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A7C28229ACD0061E512 /* UIEdgeInsets+Extensions.swift */; };
 		B4D4773428215428001616C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4773328215428001616C4 /* AppDelegate.swift */; };
 		B4D4773D2821542A001616C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773C2821542A001616C4 /* Assets.xcassets */; };
 		B4D477402821542A001616C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773E2821542A001616C4 /* LaunchScreen.storyboard */; };
@@ -34,6 +41,13 @@
 		B40C5A5B28226CDA0061E512 /* ViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInterface.swift; sourceTree = "<group>"; };
 		B40C5A5D28226D200061E512 /* PresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterInterface.swift; sourceTree = "<group>"; };
 		B40C5A5F28226D2C0061E512 /* InteractorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorInterface.swift; sourceTree = "<group>"; };
+		B40C5A6328228DF00061E512 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B40C5A65282291FB0061E512 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		B40C5A66282291FB0061E512 /* UIView+Corners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Corners.swift"; sourceTree = "<group>"; };
+		B40C5A69282294870061E512 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		B40C5A77282296470061E512 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		B40C5A7A2822965A0061E512 /* BundleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleImage.swift; sourceTree = "<group>"; };
+		B40C5A7C28229ACD0061E512 /* UIEdgeInsets+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extensions.swift"; sourceTree = "<group>"; };
 		B4D4773028215428001616C4 /* TvShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TvShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D4773328215428001616C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4D4773C2821542A001616C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +81,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		B40C5A79282296520061E512 /* Bundles */ = {
+			isa = PBXGroup;
+			children = (
+				B40C5A7A2822965A0061E512 /* BundleImage.swift */,
+			);
+			path = Bundles;
+			sourceTree = "<group>";
+		};
 		B4D01B4528216F1F00A2B6C2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +100,7 @@
 		B4D01B4628216F2600A2B6C2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B40C5A79282296520061E512 /* Bundles */,
 				B4D01B4B282170D300A2B6C2 /* API */,
 				B4D01B4C282170D800A2B6C2 /* Extensions */,
 				B4D01B4D282170E100A2B6C2 /* Views */,
@@ -121,6 +144,10 @@
 		B4D01B4C282170D800A2B6C2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B40C5A7C28229ACD0061E512 /* UIEdgeInsets+Extensions.swift */,
+				B40C5A65282291FB0061E512 /* UIView+Constraints.swift */,
+				B40C5A66282291FB0061E512 /* UIView+Corners.swift */,
+				B40C5A77282296470061E512 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -128,6 +155,8 @@
 		B4D01B4D282170E100A2B6C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B40C5A69282294870061E512 /* CustomView.swift */,
+				B40C5A6328228DF00061E512 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,11 +303,18 @@
 				B40C5A4F28226A660061E512 /* LoginViewController.swift in Sources */,
 				B40C5A4E28226A660061E512 /* LoginPresenter.swift in Sources */,
 				B40C5A5C28226CDA0061E512 /* ViewInterface.swift in Sources */,
+				B40C5A6A282294870061E512 /* CustomView.swift in Sources */,
+				B40C5A67282291FB0061E512 /* UIView+Constraints.swift in Sources */,
 				B40C5A5128226A660061E512 /* LoginWireframe.swift in Sources */,
 				B4D4773428215428001616C4 /* AppDelegate.swift in Sources */,
 				B40C5A5A28226C7A0061E512 /* BaseWireframe.swift in Sources */,
+				B40C5A6428228DF00061E512 /* LoginView.swift in Sources */,
+				B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */,
+				B40C5A68282291FB0061E512 /* UIView+Corners.swift in Sources */,
 				B40C5A6028226D2C0061E512 /* InteractorInterface.swift in Sources */,
+				B40C5A7D28229ACD0061E512 /* UIEdgeInsets+Extensions.swift in Sources */,
 				B40C5A5028226A660061E512 /* LoginInteractor.swift in Sources */,
+				B40C5A78282296470061E512 /* UIImage+Extensions.swift in Sources */,
 				B40C5A4D28226A660061E512 /* LoginInterfaces.swift in Sources */,
 				B40C5A5E28226D200061E512 /* PresenterInterface.swift in Sources */,
 			);

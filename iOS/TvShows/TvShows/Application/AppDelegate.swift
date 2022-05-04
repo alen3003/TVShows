@@ -9,9 +9,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
+        window = createInitialWindow()
 
         return true
+    }
+
+    func createInitialWindow() -> UIWindow {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let viewController = LoginWireframe().viewController
+        window.rootViewController = UINavigationController(rootViewController: viewController)
+        window.makeKeyAndVisible()
+        return window
     }
 
 }

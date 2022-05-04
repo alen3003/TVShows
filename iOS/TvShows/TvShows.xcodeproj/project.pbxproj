@@ -26,6 +26,10 @@
 		B40C5A78282296470061E512 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A77282296470061E512 /* UIImage+Extensions.swift */; };
 		B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A7A2822965A0061E512 /* BundleImage.swift */; };
 		B40C5A7D28229ACD0061E512 /* UIEdgeInsets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A7C28229ACD0061E512 /* UIEdgeInsets+Extensions.swift */; };
+		B40C5A8A2822CA9F0061E512 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A892822CA9F0061E512 /* UIStackView+Extensions.swift */; };
+		B40C5A8C2822CB540061E512 /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8B2822CB540061E512 /* Divider.swift */; };
+		B40C5A8E2822CFA60061E512 /* InsetedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */; };
+		B40C5A922822DB570061E512 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A912822DB570061E512 /* UIColor+Extensions.swift */; };
 		B4D4773428215428001616C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4773328215428001616C4 /* AppDelegate.swift */; };
 		B4D4773D2821542A001616C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773C2821542A001616C4 /* Assets.xcassets */; };
 		B4D477402821542A001616C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773E2821542A001616C4 /* LaunchScreen.storyboard */; };
@@ -48,6 +52,10 @@
 		B40C5A77282296470061E512 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		B40C5A7A2822965A0061E512 /* BundleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleImage.swift; sourceTree = "<group>"; };
 		B40C5A7C28229ACD0061E512 /* UIEdgeInsets+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extensions.swift"; sourceTree = "<group>"; };
+		B40C5A892822CA9F0061E512 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		B40C5A8B2822CB540061E512 /* Divider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
+		B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetedTextField.swift; sourceTree = "<group>"; };
+		B40C5A912822DB570061E512 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B4D4773028215428001616C4 /* TvShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TvShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D4773328215428001616C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4D4773C2821542A001616C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,6 +95,22 @@
 				B40C5A7A2822965A0061E512 /* BundleImage.swift */,
 			);
 			path = Bundles;
+			sourceTree = "<group>";
+		};
+		B40C5A8F2822D0450061E512 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B40C5A6328228DF00061E512 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B40C5A902822D0550061E512 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */,
+			);
+			path = TextFields;
 			sourceTree = "<group>";
 		};
 		B4D01B4528216F1F00A2B6C2 /* Application */ = {
@@ -144,6 +168,8 @@
 		B4D01B4C282170D800A2B6C2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B40C5A912822DB570061E512 /* UIColor+Extensions.swift */,
+				B40C5A892822CA9F0061E512 /* UIStackView+Extensions.swift */,
 				B40C5A7C28229ACD0061E512 /* UIEdgeInsets+Extensions.swift */,
 				B40C5A65282291FB0061E512 /* UIView+Constraints.swift */,
 				B40C5A66282291FB0061E512 /* UIView+Corners.swift */,
@@ -156,7 +182,9 @@
 			isa = PBXGroup;
 			children = (
 				B40C5A69282294870061E512 /* CustomView.swift */,
-				B40C5A6328228DF00061E512 /* LoginView.swift */,
+				B40C5A8B2822CB540061E512 /* Divider.swift */,
+				B40C5A902822D0550061E512 /* TextFields */,
+				B40C5A8F2822D0450061E512 /* Login */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,11 +332,15 @@
 				B40C5A4E28226A660061E512 /* LoginPresenter.swift in Sources */,
 				B40C5A5C28226CDA0061E512 /* ViewInterface.swift in Sources */,
 				B40C5A6A282294870061E512 /* CustomView.swift in Sources */,
+				B40C5A922822DB570061E512 /* UIColor+Extensions.swift in Sources */,
 				B40C5A67282291FB0061E512 /* UIView+Constraints.swift in Sources */,
 				B40C5A5128226A660061E512 /* LoginWireframe.swift in Sources */,
 				B4D4773428215428001616C4 /* AppDelegate.swift in Sources */,
 				B40C5A5A28226C7A0061E512 /* BaseWireframe.swift in Sources */,
 				B40C5A6428228DF00061E512 /* LoginView.swift in Sources */,
+				B40C5A8A2822CA9F0061E512 /* UIStackView+Extensions.swift in Sources */,
+				B40C5A8E2822CFA60061E512 /* InsetedTextField.swift in Sources */,
+				B40C5A8C2822CB540061E512 /* Divider.swift in Sources */,
 				B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */,
 				B40C5A68282291FB0061E512 /* UIView+Corners.swift in Sources */,
 				B40C5A6028226D2C0061E512 /* InteractorInterface.swift in Sources */,

@@ -28,7 +28,15 @@ final class LoginPresenter {
 extension LoginPresenter: LoginPresenterInterface {
 
     func configure(with output: Login.ViewOutput) -> Login.ViewInput {
-        return Login.ViewInput()
-    }
+        let areButtonsAvailable = onButtonsAvailable(email: output.email, password: output.password)
 
+        return Login.ViewInput(areButtonsAvailable: areButtonsAvailable)
+    }
+}
+
+extension LoginPresenter {
+
+    func onButtonsAvailable(email: Driver<String?>, password: Driver<String?>) -> Driver<Bool> {
+        return .just(true)
+    }
 }

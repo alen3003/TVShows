@@ -18,7 +18,6 @@ class BaseWireframe<ViewController> where ViewController: UIViewController {
 }
 
 extension BaseWireframe: WireframeInterface {
-
 }
 
 extension BaseWireframe {

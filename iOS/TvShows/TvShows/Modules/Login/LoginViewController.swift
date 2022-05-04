@@ -16,7 +16,12 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupView()
+    }
+
+    override func loadView() {
+        view = LoginView()
     }
 
 }

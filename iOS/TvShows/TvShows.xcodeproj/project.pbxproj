@@ -7,12 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B40C5A4D28226A660061E512 /* LoginInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A4828226A660061E512 /* LoginInterfaces.swift */; };
+		B40C5A4E28226A660061E512 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A4928226A660061E512 /* LoginPresenter.swift */; };
+		B40C5A4F28226A660061E512 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A4A28226A660061E512 /* LoginViewController.swift */; };
+		B40C5A5028226A660061E512 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A4B28226A660061E512 /* LoginInteractor.swift */; };
+		B40C5A5128226A660061E512 /* LoginWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A4C28226A660061E512 /* LoginWireframe.swift */; };
+		B40C5A5428226B850061E512 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B40C5A5328226B850061E512 /* RxCocoa */; };
+		B40C5A5628226B850061E512 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B40C5A5528226B850061E512 /* RxRelay */; };
+		B40C5A5828226B850061E512 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B40C5A5728226B850061E512 /* RxSwift */; };
+		B40C5A5A28226C7A0061E512 /* BaseWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A5928226C7A0061E512 /* BaseWireframe.swift */; };
+		B40C5A5C28226CDA0061E512 /* ViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A5B28226CDA0061E512 /* ViewInterface.swift */; };
+		B40C5A5E28226D200061E512 /* PresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A5D28226D200061E512 /* PresenterInterface.swift */; };
+		B40C5A6028226D2C0061E512 /* InteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A5F28226D2C0061E512 /* InteractorInterface.swift */; };
 		B4D4773428215428001616C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4773328215428001616C4 /* AppDelegate.swift */; };
 		B4D4773D2821542A001616C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773C2821542A001616C4 /* Assets.xcassets */; };
 		B4D477402821542A001616C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773E2821542A001616C4 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B40C5A4828226A660061E512 /* LoginInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInterfaces.swift; sourceTree = "<group>"; };
+		B40C5A4928226A660061E512 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		B40C5A4A28226A660061E512 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B40C5A4B28226A660061E512 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		B40C5A4C28226A660061E512 /* LoginWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWireframe.swift; sourceTree = "<group>"; };
+		B40C5A5928226C7A0061E512 /* BaseWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWireframe.swift; sourceTree = "<group>"; };
+		B40C5A5B28226CDA0061E512 /* ViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInterface.swift; sourceTree = "<group>"; };
+		B40C5A5D28226D200061E512 /* PresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterInterface.swift; sourceTree = "<group>"; };
+		B40C5A5F28226D2C0061E512 /* InteractorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorInterface.swift; sourceTree = "<group>"; };
 		B4D4773028215428001616C4 /* TvShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TvShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D4773328215428001616C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4D4773C2821542A001616C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -25,12 +46,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B40C5A5828226B850061E512 /* RxSwift in Frameworks */,
+				B40C5A5628226B850061E512 /* RxRelay in Frameworks */,
+				B40C5A5428226B850061E512 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B40C5A4728226A080061E512 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B40C5A4828226A660061E512 /* LoginInterfaces.swift */,
+				B40C5A4928226A660061E512 /* LoginPresenter.swift */,
+				B40C5A4A28226A660061E512 /* LoginViewController.swift */,
+				B40C5A4B28226A660061E512 /* LoginInteractor.swift */,
+				B40C5A4C28226A660061E512 /* LoginWireframe.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		B4D01B4528216F1F00A2B6C2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +89,7 @@
 		B4D01B4728216F2C00A2B6C2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B40C5A4728226A080061E512 /* Login */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -98,6 +135,10 @@
 		B4D01B4E282170EB00A2B6C2 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
+				B40C5A5928226C7A0061E512 /* BaseWireframe.swift */,
+				B40C5A5B28226CDA0061E512 /* ViewInterface.swift */,
+				B40C5A5D28226D200061E512 /* PresenterInterface.swift */,
+				B40C5A5F28226D2C0061E512 /* InteractorInterface.swift */,
 			);
 			path = VIPER;
 			sourceTree = "<group>";
@@ -147,6 +188,11 @@
 			dependencies = (
 			);
 			name = TvShows;
+			packageProductDependencies = (
+				B40C5A5328226B850061E512 /* RxCocoa */,
+				B40C5A5528226B850061E512 /* RxRelay */,
+				B40C5A5728226B850061E512 /* RxSwift */,
+			);
 			productName = TvShows;
 			productReference = B4D4773028215428001616C4 /* TvShows.app */;
 			productType = "com.apple.product-type.application";
@@ -175,6 +221,9 @@
 				Base,
 			);
 			mainGroup = B4D4772728215428001616C4;
+			packageReferences = (
+				B40C5A5228226B850061E512 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = B4D4773128215428001616C4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -222,7 +271,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B40C5A4F28226A660061E512 /* LoginViewController.swift in Sources */,
+				B40C5A4E28226A660061E512 /* LoginPresenter.swift in Sources */,
+				B40C5A5C28226CDA0061E512 /* ViewInterface.swift in Sources */,
+				B40C5A5128226A660061E512 /* LoginWireframe.swift in Sources */,
 				B4D4773428215428001616C4 /* AppDelegate.swift in Sources */,
+				B40C5A5A28226C7A0061E512 /* BaseWireframe.swift in Sources */,
+				B40C5A6028226D2C0061E512 /* InteractorInterface.swift in Sources */,
+				B40C5A5028226A660061E512 /* LoginInteractor.swift in Sources */,
+				B40C5A4D28226A660061E512 /* LoginInterfaces.swift in Sources */,
+				B40C5A5E28226D200061E512 /* PresenterInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +490,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B40C5A5228226B850061E512 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B40C5A5328226B850061E512 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B40C5A5228226B850061E512 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B40C5A5528226B850061E512 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B40C5A5228226B850061E512 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		B40C5A5728226B850061E512 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B40C5A5228226B850061E512 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B4D4772828215428001616C4 /* Project object */;
 }

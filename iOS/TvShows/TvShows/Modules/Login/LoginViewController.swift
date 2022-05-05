@@ -9,6 +9,7 @@ final class LoginViewController: UIViewController {
     var presenter: LoginPresenterInterface!
 
     // MARK: - Private properties -
+    private let loginView = LoginView()
     private let disposeBag = DisposeBag()
 
     // MARK: - Lifecycle -
@@ -20,7 +21,7 @@ final class LoginViewController: UIViewController {
     }
 
     override func loadView() {
-        view = LoginView()
+        view = loginView
     }
 
 }
@@ -31,24 +32,30 @@ extension LoginViewController: LoginViewInterface {
 }
 
 private extension LoginViewController {
-    // TODO: Implement setupView method for LoginViewController
     func setupView() {
         let output = Login.ViewOutput(
-            login: .never(),
-            register: .never(),
+            login: loginView.loginButton.rx.tap.asSignal(),
+            register: loginView.registerButton.rx.tap.asSignal(),
             rememberMe: .never(),
-            email: .never(),
-            password: .never()
+            email: loginView.emailTextField.rx.text.asDriver(),
+            password: loginView.passwordTextField.rx.text.asDriver()
         )
 
         let input = presenter.configure(with: output)
-        areButtonsEnabled(areEnabled: input.areButtonsAvailable)
+        handle(areActionsAvailable: input.areButtonsAvailable)
     }
 
 }
 
 private extension LoginViewController {
 
-    func areButtonsEnabled(areEnabled: Driver<Bool>) {
+    func handle(areActionsAvailable: Driver<Bool>) {
+        areActionsAvailable
+            .drive(loginView.loginButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        areActionsAvailable
+            .drive(loginView.registerButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 }

@@ -4,7 +4,6 @@ extension UIColor {
 
     static var backgroundViolet: UIColor {
         UIColor(rgb: 0x52368C)
-
     }
 
     // MARK: - Init

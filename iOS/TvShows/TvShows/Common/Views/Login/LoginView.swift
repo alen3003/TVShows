@@ -1,4 +1,3 @@
-import RxSwift
 import UIKit
 
 class LoginView: CustomView {

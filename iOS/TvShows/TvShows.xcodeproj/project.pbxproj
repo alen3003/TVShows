@@ -30,6 +30,7 @@
 		B40C5A8C2822CB540061E512 /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8B2822CB540061E512 /* Divider.swift */; };
 		B40C5A8E2822CFA60061E512 /* InsetedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */; };
 		B40C5A922822DB570061E512 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A912822DB570061E512 /* UIColor+Extensions.swift */; };
+		B4562BBA2823BA9300BDD33E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4562BB92823BA9300BDD33E /* BaseButton.swift */; };
 		B4D4773428215428001616C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4773328215428001616C4 /* AppDelegate.swift */; };
 		B4D4773D2821542A001616C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773C2821542A001616C4 /* Assets.xcassets */; };
 		B4D477402821542A001616C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773E2821542A001616C4 /* LaunchScreen.storyboard */; };
@@ -56,6 +57,7 @@
 		B40C5A8B2822CB540061E512 /* Divider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetedTextField.swift; sourceTree = "<group>"; };
 		B40C5A912822DB570061E512 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		B4562BB92823BA9300BDD33E /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		B4D4773028215428001616C4 /* TvShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TvShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D4773328215428001616C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4D4773C2821542A001616C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 				B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */,
 			);
 			path = TextFields;
+			sourceTree = "<group>";
+		};
+		B4562BB82823BA5C00BDD33E /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				B4562BB92823BA9300BDD33E /* BaseButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		B4D01B4528216F1F00A2B6C2 /* Application */ = {
@@ -183,6 +193,7 @@
 			children = (
 				B40C5A69282294870061E512 /* CustomView.swift */,
 				B40C5A8B2822CB540061E512 /* Divider.swift */,
+				B4562BB82823BA5C00BDD33E /* Buttons */,
 				B40C5A902822D0550061E512 /* TextFields */,
 				B40C5A8F2822D0450061E512 /* Login */,
 			);
@@ -344,6 +355,7 @@
 				B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */,
 				B40C5A68282291FB0061E512 /* UIView+Corners.swift in Sources */,
 				B40C5A6028226D2C0061E512 /* InteractorInterface.swift in Sources */,
+				B4562BBA2823BA9300BDD33E /* BaseButton.swift in Sources */,
 				B40C5A7D28229ACD0061E512 /* UIEdgeInsets+Extensions.swift in Sources */,
 				B40C5A5028226A660061E512 /* LoginInteractor.swift in Sources */,
 				B40C5A78282296470061E512 /* UIImage+Extensions.swift in Sources */,

@@ -1,3 +1,4 @@
+import RxSwift
 import UIKit
 
 class LoginView: CustomView {
@@ -12,8 +13,15 @@ class LoginView: CustomView {
     var passwordTextField: UITextField!
     var revealPasswordButton: UIButton!
     var passwordDivider: Divider!
-    var loginButton: UIButton!
-    var registerButton: UIButton!
+    var loginButton: BaseButton!
+    var registerButton: BaseButton!
+
+    convenience init() {
+        self.init(frame: .zero)
+
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
 
     override func setupLayout() {
         backgroundImageView = UIImageView()
@@ -45,10 +53,10 @@ class LoginView: CustomView {
         passwordDivider = Divider()
         stackView.addArrangedSubview(passwordDivider)
 
-        loginButton = UIButton()
+        loginButton = BaseButton()
         stackView.addArrangedSubview(loginButton)
 
-        registerButton = UIButton()
+        registerButton = BaseButton()
         stackView.addArrangedSubview(registerButton)
     }
 
@@ -65,6 +73,7 @@ class LoginView: CustomView {
         stackView.setCustomSpacing(20, after: loginLabel)
         stackView.setCustomSpacing(45, after: loginDescriptionLabel)
         stackView.setCustomSpacing(25, after: emailDivider)
+        stackView.setCustomSpacing(30, after: passwordDivider)
 
         loginLabel.text = "Login"
         loginLabel.textColor = .white
@@ -112,6 +121,15 @@ class LoginView: CustomView {
         loginButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
 
         registerButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    }
+
+}
+
+extension LoginView: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        endEditing(true)
+        return false
     }
 
 }

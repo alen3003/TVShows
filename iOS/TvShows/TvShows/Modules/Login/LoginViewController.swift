@@ -32,14 +32,14 @@ extension LoginViewController: LoginViewInterface {
 }
 
 private extension LoginViewController {
-
+    // TODO: Implement setupView method for LoginViewController
     func setupView() {
         let output = Login.ViewOutput(
-            login: .just(()),
-            register: .just(()),
-            rememberMe: .just(false),
-            email: .just(nil),
-            password: .just(nil)
+            login: .never(),
+            register: .never(),
+            rememberMe: .never(),
+            email: .never(),
+            password: .never()
         )
 
         let input = presenter.configure(with: output)
@@ -51,6 +51,5 @@ private extension LoginViewController {
 private extension LoginViewController {
 
     func areButtonsEnabled(areEnabled: Driver<Bool>) {
-
     }
 }

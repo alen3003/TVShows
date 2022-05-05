@@ -35,8 +35,8 @@ extension LoginPresenter: LoginPresenterInterface {
 }
 
 extension LoginPresenter {
-
+    // TODO: Implement onButtonsAvailable
     func onButtonsAvailable(email: Driver<String?>, password: Driver<String?>) -> Driver<Bool> {
-        return .just(true)
+        .never()
     }
 }

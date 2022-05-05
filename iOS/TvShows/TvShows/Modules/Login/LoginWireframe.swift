@@ -26,5 +26,4 @@ extension LoginWireframe: LoginWireframeInterface {
     func navigateToHome() {
         // TODO: Start HomeModule
     }
-
 }

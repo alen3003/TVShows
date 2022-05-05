@@ -9,7 +9,6 @@ final class LoginViewController: UIViewController {
     var presenter: LoginPresenterInterface!
 
     // MARK: - Private properties -
-    private let loginView = LoginView()
     private let disposeBag = DisposeBag()
 
     // MARK: - Lifecycle -
@@ -21,7 +20,7 @@ final class LoginViewController: UIViewController {
     }
 
     override func loadView() {
-        view = loginView
+        view = LoginView()
     }
 
 }

@@ -1,3 +1,4 @@
+import RxSwift
 import UIKit
 
 class LoginView: CustomView {
@@ -15,11 +16,14 @@ class LoginView: CustomView {
     var loginButton: BaseButton!
     var registerButton: BaseButton!
 
+    private let disposeBag = DisposeBag()
+
     convenience init() {
         self.init(frame: .zero)
 
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        bindViews()
     }
 
     override func setupLayout() {
@@ -120,6 +124,23 @@ class LoginView: CustomView {
         loginButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
 
         registerButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    }
+
+    private func bindViews() {
+        revealPasswordButton
+            .rx
+            .tap
+            .asSignal()
+            .map { [unowned self] in
+                passwordTextField.isSecureTextEntry
+            }
+            .emit { [unowned self] isSecureEntry in
+                passwordTextField.isSecureTextEntry = !isSecureEntry
+                let secureEntryImage = isSecureEntry ?
+                UIImage(with: .passwordVisible) : UIImage(with: .passwordInvisible)
+                revealPasswordButton.setImage(secureEntryImage, for: .normal)
+            }
+            .disposed(by: disposeBag)
     }
 
 }

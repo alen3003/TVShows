@@ -9,7 +9,6 @@ final class LoginViewController: UIViewController {
     var presenter: LoginPresenterInterface!
 
     // MARK: - Private properties -
-
     private let disposeBag = DisposeBag()
 
     // MARK: - Lifecycle -
@@ -32,11 +31,24 @@ extension LoginViewController: LoginViewInterface {
 }
 
 private extension LoginViewController {
-
+    // TODO: Implement setupView method for LoginViewController
     func setupView() {
-        let output = Login.ViewOutput()
+        let output = Login.ViewOutput(
+            login: .never(),
+            register: .never(),
+            rememberMe: .never(),
+            email: .never(),
+            password: .never()
+        )
 
-        _ = presenter.configure(with: output)
+        let input = presenter.configure(with: output)
+        areButtonsEnabled(areEnabled: input.areButtonsAvailable)
     }
 
+}
+
+private extension LoginViewController {
+
+    func areButtonsEnabled(areEnabled: Driver<Bool>) {
+    }
 }

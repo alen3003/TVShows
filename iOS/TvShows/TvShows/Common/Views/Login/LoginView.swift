@@ -141,7 +141,7 @@ class LoginView: CustomView {
 extension LoginView: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        endEditing(true)
+        textField.resignFirstResponder()
         return false
     }
 

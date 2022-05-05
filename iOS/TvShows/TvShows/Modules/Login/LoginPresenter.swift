@@ -34,13 +34,8 @@ extension LoginPresenter: LoginPresenterInterface {
 }
 
 extension LoginPresenter {
-
+    // TODO: Implement onButtonsAvailable
     func onButtonsAvailable(email: Driver<String?>, password: Driver<String?>) -> Driver<Bool> {
-        Driver
-            .combineLatest(email.compactMap { $0 }, password.compactMap { $0 })
-            .map { email, password in
-                !email.isEmpty && !password.isEmpty
-            }
-            .startWith(false)
+        .never()
     }
 }

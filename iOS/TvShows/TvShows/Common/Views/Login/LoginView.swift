@@ -127,19 +127,12 @@ class LoginView: CustomView {
     }
 
     private func bindViews() {
-        revealPasswordButton
-            .rx
-            .tap
-            .asSignal()
-            .map { [unowned self] in
-                passwordTextField.isSecureTextEntry
-            }
-            .emit { [unowned self] isSecureEntry in
-                passwordTextField.isSecureTextEntry = !isSecureEntry
-                let secureEntryImage = isSecureEntry ?
-                UIImage(with: .passwordVisible) : UIImage(with: .passwordInvisible)
-                revealPasswordButton.setImage(secureEntryImage, for: .normal)
-            }
+        revealPasswordButton.rx.tap
+            .asDriver()
+            .scan(false, accumulator: { previews, _ in
+                !previews
+            })
+            .drive(rx.secureTextEntry)
             .disposed(by: disposeBag)
     }
 
@@ -148,8 +141,21 @@ class LoginView: CustomView {
 extension LoginView: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        endEditing(true)
+        textField.resignFirstResponder()
         return false
+    }
+
+}
+
+extension Reactive where Base == LoginView {
+
+    var secureTextEntry: Binder<Bool> {
+        Binder(base) { loginView, isSecureEntry in
+            loginView.passwordTextField.isSecureTextEntry = !isSecureEntry
+            let secureEntryImage = isSecureEntry ?
+            UIImage(with: .passwordVisible) : UIImage(with: .passwordInvisible)
+            loginView.revealPasswordButton.setImage(secureEntryImage, for: .normal)
+        }
     }
 
 }

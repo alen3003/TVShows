@@ -14,12 +14,11 @@ protocol LoginPresenterInterface: PresenterInterface {
 }
 
 protocol LoginInteractorInterface: InteractorInterface {
-    func login(with email: String, _ password: String) -> Completable
-    func register(with email: String, _ password: String) -> Completable
+    func login(with email: String, _ password: String) -> Single<Member>
+    func register(with email: String, _ password: String) -> Single<Member>
 }
 
 enum Login {
-
     struct ViewOutput {
         let login: Signal<Void>
         let register: Signal<Void>

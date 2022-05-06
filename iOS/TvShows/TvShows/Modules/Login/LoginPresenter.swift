@@ -9,6 +9,8 @@ final class LoginPresenter {
     private let interactor: LoginInteractorInterface
     private let wireframe: LoginWireframeInterface
 
+    private let disposeBag = DisposeBag()
+
     // MARK: - Lifecycle -
 
     init(
@@ -27,13 +29,86 @@ final class LoginPresenter {
 extension LoginPresenter: LoginPresenterInterface {
 
     func configure(with output: Login.ViewOutput) -> Login.ViewInput {
-        let areButtonsAvailable = onButtonsAvailable(email: output.email, password: output.password)
+        handle(
+            login: output.login,
+            output.email,
+            output.password
+        )
+        handle(
+            register: output.register,
+            output.email,
+            output.password
+        )
 
+        let areButtonsAvailable = onButtonsAvailable(email: output.email, password: output.password)
         return Login.ViewInput(areButtonsAvailable: areButtonsAvailable)
     }
 }
 
 extension LoginPresenter {
+
+    func handle(
+        login: Signal<Void>,
+        _ email: Driver<String?>,
+        _ password: Driver<String?>
+    ) {
+        let inputs = Driver.combineLatest(email.compactMap { $0 }, password.compactMap { $0 })
+        login
+            .withLatestFrom(inputs)
+            .flatMap { [unowned self] email, password -> Driver<Member> in
+                performLogin(email, password)
+            }
+            .do(onNext: { member in
+                print("Successfully logged in member: \(member)")
+            })
+            .drive(onNext: { [unowned wireframe] _ in
+                wireframe.navigateToHome()
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func performLogin(_ email: String, _ password: String) -> Driver<Member> {
+        interactor
+            .login(with: email, password)
+            .do(onError: { _ in
+                // TODO: Hide progress indicator and show validation error
+            }, onSubscribe: {
+                // TODO: Show progress indicator
+            })
+            .asDriver(onErrorDriveWith: .never())
+    }
+
+    func handle(
+        register: Signal<Void>,
+        _ email: Driver<String?>,
+        _ password: Driver<String?>
+    ) {
+        let inputs = Driver.combineLatest(email.compactMap { $0 }, password.compactMap { $0 })
+        register
+            .withLatestFrom(inputs)
+            .flatMap { [unowned self] email, password -> Driver<Member> in
+                performRegister(email, password)
+            }
+            .do(onNext: { member in
+                print("Successfully registered member: \(member)")
+            })
+            .drive(onNext: { [unowned wireframe] _ in
+                wireframe.navigateToHome()
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func performRegister(_ email: String, _ password: String) -> Driver<Member> {
+        return interactor
+            .register(with: email, password)
+            .do(onError: { _ in
+                // TODO: Hide progress indicator and show validation error
+            }, onSubscribe: {
+                // TODO: Show progress indicator
+            })
+            .asDriver(onErrorDriveWith: .never())
+    }
+
     func onButtonsAvailable(email: Driver<String?>, password: Driver<String?>) -> Driver<Bool> {
         Driver.combineLatest(email.compactMap { $0 }, password.compactMap { $0 })
             .map { email, password in

@@ -90,7 +90,7 @@ class LoginView: CustomView {
         emailTextField.textColor = .white
         emailTextField.font = .systemFont(ofSize: 17, weight: .regular)
         emailTextField.returnKeyType = .done
-        passwordTextField.keyboardType = .emailAddress
+        emailTextField.keyboardType = .emailAddress
 
         revealPasswordButton.setImage(UIImage(with: .passwordInvisible), for: .normal)
 

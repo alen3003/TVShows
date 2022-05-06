@@ -1,4 +1,4 @@
-public enum ApiError: Error {
+enum ApiError: Error {
     case general
     case noData
     case invalidContentType

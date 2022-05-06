@@ -8,7 +8,6 @@ final class LoginPresenter {
     private unowned let view: LoginViewInterface
     private let interactor: LoginInteractorInterface
     private let wireframe: LoginWireframeInterface
-
     private let disposeBag = DisposeBag()
 
     // MARK: - Lifecycle -
@@ -58,8 +57,10 @@ extension LoginPresenter {
             .flatMap { [unowned self] email, password -> Driver<Member> in
                 performLogin(email, password)
             }
-            .do(onNext: { member in
+            .do(onNext: { [unowned view] member in
+                view.hideTransient()
                 print("Successfully logged in member: \(member)")
+                // TODO: Save user
             })
             .drive(onNext: { [unowned wireframe] _ in
                 wireframe.navigateToHome()
@@ -70,10 +71,12 @@ extension LoginPresenter {
     func performLogin(_ email: String, _ password: String) -> Driver<Member> {
         interactor
             .login(with: email, password)
-            .do(onError: { _ in
-                // TODO: Hide progress indicator and show validation error
-            }, onSubscribe: {
-                // TODO: Show progress indicator
+            .observe(on: MainScheduler.instance)
+            .do(onError: { [unowned self] error in
+                view.hideTransient()
+                showValidationError(error)
+            }, onSubscribe: { [unowned view] in
+                view.showTransient()
             })
             .asDriver(onErrorDriveWith: .never())
     }
@@ -89,8 +92,10 @@ extension LoginPresenter {
             .flatMap { [unowned self] email, password -> Driver<Member> in
                 performRegister(email, password)
             }
-            .do(onNext: { member in
+            .do(onNext: { [unowned view] member in
+                view.hideTransient()
                 print("Successfully registered member: \(member)")
+                // TODO: Save user
             })
             .drive(onNext: { [unowned wireframe] _ in
                 wireframe.navigateToHome()
@@ -99,12 +104,14 @@ extension LoginPresenter {
     }
 
     func performRegister(_ email: String, _ password: String) -> Driver<Member> {
-        return interactor
+        interactor
             .register(with: email, password)
-            .do(onError: { _ in
-                // TODO: Hide progress indicator and show validation error
-            }, onSubscribe: {
-                // TODO: Show progress indicator
+            .observe(on: MainScheduler.instance)
+            .do(onError: { [unowned self] error in
+                view.hideTransient()
+                showValidationError(error)
+            }, onSubscribe: { [unowned view] in
+                view.showTransient()
             })
             .asDriver(onErrorDriveWith: .never())
     }
@@ -115,5 +122,11 @@ extension LoginPresenter {
                 !email.isEmpty && !password.isEmpty
             }
             .startWith(false)
+    }
+}
+
+private extension LoginPresenter {
+    func showValidationError(_ error: Error) {
+        wireframe.showAlert(with: "Error", message: error.localizedDescription)
     }
 }

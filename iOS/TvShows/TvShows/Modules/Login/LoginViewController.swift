@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: BaseViewController {
 
     // MARK: - Public properties -
 
@@ -29,6 +29,13 @@ final class LoginViewController: UIViewController {
 // MARK: - Extensions -
 
 extension LoginViewController: LoginViewInterface {
+    func showTransient() {
+        showTransientView()
+    }
+
+    func hideTransient() {
+        hideTransientView()
+    }
 }
 
 private extension LoginViewController {

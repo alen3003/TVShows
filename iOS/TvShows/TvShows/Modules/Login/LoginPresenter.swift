@@ -26,7 +26,6 @@ final class LoginPresenter {
 // MARK: - Extensions -
 
 extension LoginPresenter: LoginPresenterInterface {
-
     func configure(with output: Login.ViewOutput) -> Login.ViewInput {
         handle(
             login: output.login,
@@ -45,7 +44,6 @@ extension LoginPresenter: LoginPresenterInterface {
 }
 
 extension LoginPresenter {
-
     func handle(
         login: Signal<Void>,
         _ email: Driver<String?>,

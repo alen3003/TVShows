@@ -44,7 +44,7 @@ class BaseApiClient: ApiClientProtocol {
                     single(.failure(ApiError.badRequest))
                     return
                 }
-                
+
                 if let error = self.mapToApiError(status: statusCode) {
                     single(.failure(error))
                     return

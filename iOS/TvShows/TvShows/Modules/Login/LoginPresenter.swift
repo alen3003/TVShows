@@ -47,7 +47,7 @@ extension LoginPresenter: LoginPresenterInterface {
 
 extension LoginPresenter {
 
-    func handle(
+    private func handle(
         login: Signal<Void>,
         _ email: Driver<String?>,
         _ password: Driver<String?>
@@ -67,7 +67,7 @@ extension LoginPresenter {
             .disposed(by: disposeBag)
     }
 
-    func performLogin(_ email: String, _ password: String) -> Driver<Member> {
+    private func performLogin(_ email: String, _ password: String) -> Driver<Member> {
         interactor
             .login(with: email, password)
             .do(onError: { _ in
@@ -78,7 +78,7 @@ extension LoginPresenter {
             .asDriver(onErrorDriveWith: .never())
     }
 
-    func handle(
+    private func handle(
         register: Signal<Void>,
         _ email: Driver<String?>,
         _ password: Driver<String?>
@@ -98,7 +98,7 @@ extension LoginPresenter {
             .disposed(by: disposeBag)
     }
 
-    func performRegister(_ email: String, _ password: String) -> Driver<Member> {
+    private func performRegister(_ email: String, _ password: String) -> Driver<Member> {
         return interactor
             .register(with: email, password)
             .do(onError: { _ in
@@ -109,7 +109,7 @@ extension LoginPresenter {
             .asDriver(onErrorDriveWith: .never())
     }
 
-    func onButtonsAvailable(email: Driver<String?>, password: Driver<String?>) -> Driver<Bool> {
+    private func onButtonsAvailable(email: Driver<String?>, password: Driver<String?>) -> Driver<Bool> {
         Driver.combineLatest(email.compactMap { $0 }, password.compactMap { $0 })
             .map { email, password in
                 !email.isEmpty && !password.isEmpty

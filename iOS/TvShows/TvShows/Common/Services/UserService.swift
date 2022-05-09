@@ -6,21 +6,19 @@ class UserService {
     static let shared = UserService()
 
     private let apiClient: ApiClientProtocol
-    private let userDefaults: UserDefaults
 
     private init() {
-        userDefaults = .standard
-        apiClient = BaseApiClient(baseUrl: NetworkConstants.base.rawValue)
+        apiClient = BaseApiClient(baseUrl: NetworkConstants.base)
     }
 
     func login(with email: String, _ password: String) -> Single<MemberWrapper> {
         let params = createParameters(email, password)
-        return apiClient.post(path: NetworkConstants.login.rawValue, body: params)
+        return apiClient.post(path: NetworkConstants.login, body: params)
     }
 
     func register(with email: String, _ password: String) -> Single<MemberWrapper> {
         let params = createParameters(email, password)
-        return apiClient.post(path: NetworkConstants.register.rawValue, body: params)
+        return apiClient.post(path: NetworkConstants.register, body: params)
     }
 }
 

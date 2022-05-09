@@ -1,10 +1,10 @@
 import Foundation
 
-enum NetworkConstants: String {
+enum NetworkConstants {
 
-    case base = "https://tv-shows.infinum.academy"
-    case login = "/users/sign_in"
-    case register = "/users"
-    case shows = "/shows"
+    static let base = "https://tv-shows.infinum.academy"
+    static let login = "/users/sign_in"
+    static let register = "/users"
+    static let shows = "/shows"
 
 }

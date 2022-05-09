@@ -35,7 +35,7 @@ class BaseApiClient: ApiClientProtocol {
             guard let self = self else { return Disposables.create() }
 
             let request = self.buildRequest(path: path, method: method, parameters: parameters)
-            self.urlSession.dataTask(with: request) { [weak self] data, response, error in
+            let dataTask = self.urlSession.dataTask(with: request) { [weak self] data, response, error in
                 guard
                     let httpReponse = response as? HTTPURLResponse,
                     let self = self,
@@ -49,17 +49,18 @@ class BaseApiClient: ApiClientProtocol {
                     single(.failure(error))
                     return
                 }
-                
-                guard let result: ResultType = self.parse(data: data) else {
-                    single(.failure(ApiError.noData))
-                    return
-                }
 
-                single(.success(result))
+                do {
+                    let result: ResultType = try self.parse(data: data)
+                    single(.success(result))
+                } catch {
+                    single(.failure(error))
+                }
             }
-            .resume()
-            
-            return Disposables.create()
+
+            dataTask.resume()
+
+            return Disposables.create { dataTask.cancel() }
         }
     }
 
@@ -72,7 +73,7 @@ class BaseApiClient: ApiClientProtocol {
             guard let self = self else { return Disposables.create() }
 
             let request = self.buildRequest(path: path, method: method, parameters: parameters)
-            self.urlSession.dataTask(with: request) { [weak self] _, response, error in
+            let dataTask = self.urlSession.dataTask(with: request) { [weak self] _, response, error in
                 guard
                     let httpReponse = response as? HTTPURLResponse,
                     let self = self,
@@ -90,9 +91,10 @@ class BaseApiClient: ApiClientProtocol {
                 observer(.completed)
 
             }
-            .resume()
 
-            return Disposables.create()
+            dataTask.resume()
+
+            return Disposables.create { dataTask.cancel() }
         }
     }
 
@@ -124,10 +126,9 @@ class BaseApiClient: ApiClientProtocol {
         return urlRequest
     }
 
-    private func parse<ResultType: Decodable>(data: Data?) -> ResultType? {
+    private func parse<ResultType: Decodable>(data: Data?) throws -> ResultType {
         guard let data = data else {
-            print("Data does not exist...")
-            return nil
+            throw ApiError.noData
         }
 
         do {
@@ -135,8 +136,7 @@ class BaseApiClient: ApiClientProtocol {
             print("Got data: \(dataString)")
             return try JSONDecoder().decode(ResultType.self, from: data)
         } catch {
-            print("Unexpected error on decoding data to \(ResultType.self)! (\(error)")
-            return nil
+            throw ApiError.parseError
         }
     }
 

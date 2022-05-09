@@ -67,7 +67,7 @@ extension LoginPresenter {
             .disposed(by: disposeBag)
     }
 
-    func performLogin(_ email: String, _ password: String) -> Driver<Member> {
+    private func performLogin(_ email: String, _ password: String) -> Driver<Member> {
         interactor
             .login(with: email, password)
             .observe(on: MainScheduler.instance)
@@ -102,7 +102,7 @@ extension LoginPresenter {
             .disposed(by: disposeBag)
     }
 
-    func performRegister(_ email: String, _ password: String) -> Driver<Member> {
+    private func performRegister(_ email: String, _ password: String) -> Driver<Member> {
         interactor
             .register(with: email, password)
             .observe(on: MainScheduler.instance)
@@ -125,7 +125,7 @@ extension LoginPresenter {
 }
 
 private extension LoginPresenter {
-    func showValidationError(_ error: Error) {
+    private func showValidationError(_ error: Error) {
         wireframe.showAlert(with: "Error", message: error.localizedDescription)
     }
 }

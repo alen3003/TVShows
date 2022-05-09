@@ -6,6 +6,10 @@ extension UIColor {
         UIColor(rgb: 0x52368C)
     }
 
+    static var neutral1000: UIColor {
+        UIColor(rgb: 0x4A4F54)
+    }
+
     // MARK: - Init
     private convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")

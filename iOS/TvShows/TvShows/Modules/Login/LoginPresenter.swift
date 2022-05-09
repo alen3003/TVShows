@@ -10,8 +10,6 @@ final class LoginPresenter {
     private let wireframe: LoginWireframeInterface
     private let disposeBag = DisposeBag()
 
-    private let disposeBag = DisposeBag()
-
     // MARK: - Lifecycle -
 
     init(

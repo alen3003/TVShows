@@ -39,9 +39,6 @@
 		B4AF9E242825219D0042BA4F /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9E212825219D0042BA4F /* ApiError.swift */; };
 		B4AF9EBA282525590042BA4F /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EB9282525590042BA4F /* UserService.swift */; };
 		B4AF9EBD28252DDF0042BA4F /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EBC28252DDF0042BA4F /* NetworkConstants.swift */; };
-		B4AF9EBF28254B6B0042BA4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EBE28254B6B0042BA4F /* BaseViewController.swift */; };
-		B4AF9EC428254BC10042BA4F /* TransientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EC128254BC10042BA4F /* TransientView.swift */; };
-		B4AF9EC628254BC10042BA4F /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EC328254BC10042BA4F /* SpinnerView.swift */; };
 		B4D4773428215428001616C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4773328215428001616C4 /* AppDelegate.swift */; };
 		B4D4773D2821542A001616C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773C2821542A001616C4 /* Assets.xcassets */; };
 		B4D477402821542A001616C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773E2821542A001616C4 /* LaunchScreen.storyboard */; };
@@ -77,9 +74,6 @@
 		B4AF9E212825219D0042BA4F /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		B4AF9EB9282525590042BA4F /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		B4AF9EBC28252DDF0042BA4F /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
-		B4AF9EBE28254B6B0042BA4F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		B4AF9EC128254BC10042BA4F /* TransientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransientView.swift; sourceTree = "<group>"; };
-		B4AF9EC328254BC10042BA4F /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		B4D4773028215428001616C4 /* TvShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TvShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D4773328215428001616C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4D4773C2821542A001616C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,15 +173,6 @@
 			path = NetworkConstants;
 			sourceTree = "<group>";
 		};
-		B4AF9EC028254BAF0042BA4F /* TransientView */ = {
-			isa = PBXGroup;
-			children = (
-				B4AF9EC328254BC10042BA4F /* SpinnerView.swift */,
-				B4AF9EC128254BC10042BA4F /* TransientView.swift */,
-			);
-			path = TransientView;
-			sourceTree = "<group>";
-		};
 		B4D01B4528216F1F00A2B6C2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,7 +184,6 @@
 		B4D01B4628216F2600A2B6C2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B4AF9EBE28254B6B0042BA4F /* BaseViewController.swift */,
 				B4AF9EB82825254B0042BA4F /* Services */,
 				B4AF9E162825203F0042BA4F /* Models */,
 				B40C5A79282296520061E512 /* Bundles */,
@@ -267,7 +251,6 @@
 				B40C5A8B2822CB540061E512 /* Divider.swift */,
 				B4562BB82823BA5C00BDD33E /* Buttons */,
 				B40C5A902822D0550061E512 /* TextFields */,
-				B4AF9EC028254BAF0042BA4F /* TransientView */,
 				B40C5A8F2822D0450061E512 /* Login */,
 			);
 			path = Views;
@@ -413,14 +396,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B40C5A4F28226A660061E512 /* LoginViewController.swift in Sources */,
-				B4AF9EC428254BC10042BA4F /* TransientView.swift in Sources */,
 				B40C5A4E28226A660061E512 /* LoginPresenter.swift in Sources */,
 				B4AF9E222825219D0042BA4F /* HttpMethod.swift in Sources */,
 				B40C5A5C28226CDA0061E512 /* ViewInterface.swift in Sources */,
-				B4AF9EBF28254B6B0042BA4F /* BaseViewController.swift in Sources */,
 				B40C5A6A282294870061E512 /* CustomView.swift in Sources */,
 				B40C5A922822DB570061E512 /* UIColor+Extensions.swift in Sources */,
-				B4AF9EC628254BC10042BA4F /* SpinnerView.swift in Sources */,
 				B40C5A67282291FB0061E512 /* UIView+Constraints.swift in Sources */,
 				B4AF9E232825219D0042BA4F /* HttpStatusCode.swift in Sources */,
 				B40C5A5128226A660061E512 /* LoginWireframe.swift in Sources */,

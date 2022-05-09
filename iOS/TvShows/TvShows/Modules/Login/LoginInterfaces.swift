@@ -7,8 +7,6 @@ protocol LoginWireframeInterface: WireframeInterface {
 }
 
 protocol LoginViewInterface: ViewInterface {
-    func showTransient()
-    func hideTransient()
 }
 
 protocol LoginPresenterInterface: PresenterInterface {

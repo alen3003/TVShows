@@ -77,7 +77,7 @@ extension LoginPresenter {
             }, onSubscribe: { [unowned view] in
                 view.showTransient()
             })
-            .asDriver(onErrorDriveWith: .never())
+            .asDriver(onErrorDriveWith: .empty())
     }
 
     private func handle(
@@ -112,7 +112,7 @@ extension LoginPresenter {
             }, onSubscribe: { [unowned view] in
                 view.showTransient()
             })
-            .asDriver(onErrorDriveWith: .never())
+            .asDriver(onErrorDriveWith: .empty())
     }
 
     private func onButtonsAvailable(email: Driver<String?>, password: Driver<String?>) -> Driver<Bool> {

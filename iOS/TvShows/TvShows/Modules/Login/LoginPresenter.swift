@@ -126,6 +126,35 @@ extension LoginPresenter {
 
 private extension LoginPresenter {
     private func showValidationError(_ error: Error) {
-        wireframe.showAlert(with: "Error", message: error.localizedDescription)
+        guard let loginError = LoginError(from: error as? ApiError) else {
+            wireframe.showAlert(with: "Error", message: error.localizedDescription)
+            return
+        }
+
+        wireframe.showAlert(with: "Error", message: loginError.message)
+    }
+
+    private enum LoginError {
+        case wrongEmailOrPassword(message: String)
+        case invalidCredentials(message: String)
+        case unknown(message: String)
+
+        init?(from error: ApiError?) {
+            switch error {
+            case .badRequest:
+                self = .wrongEmailOrPassword(message: "Please use different credentials")
+            case .unauthorized:
+                self = .invalidCredentials(message: "Invalid login credentials. Please try again")
+            default:
+                self = .unknown(message: "Try again later")
+            }
+        }
+
+        var message: String {
+            switch self {
+            case .wrongEmailOrPassword(let message), .invalidCredentials(let message), .unknown(let message):
+                return message
+            }
+        }
     }
 }

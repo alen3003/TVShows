@@ -144,7 +144,7 @@ class BaseApiClient: ApiClientProtocol {
         switch status {
         case .ok, .created, .accepted, .noContent:
             return nil
-        case .badRequest, .notAcceptable, .unsupportedMediaType:
+        case .badRequest, .notAcceptable, .unsupportedMediaType, .unprocessableEntity:
             return .badRequest
         case .unauthorized, .forbidden:
             return .unauthorized

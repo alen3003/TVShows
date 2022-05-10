@@ -11,6 +11,7 @@ enum HttpStatusCode: Int {
     case notAcceptable = 406
     case requestTimeout = 408
     case unsupportedMediaType = 415
+    case unprocessableEntity = 422
     case internalServerError = 500
     case notImplemented = 501
     case badGateway = 502

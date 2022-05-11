@@ -8,7 +8,6 @@ final class LoginPresenter {
     private unowned let view: LoginViewInterface
     private let interactor: LoginInteractorInterface
     private let wireframe: LoginWireframeInterface
-
     private let disposeBag = DisposeBag()
 
     // MARK: - Lifecycle -
@@ -27,7 +26,6 @@ final class LoginPresenter {
 // MARK: - Extensions -
 
 extension LoginPresenter: LoginPresenterInterface {
-
     func configure(with output: Login.ViewOutput) -> Login.ViewInput {
         handle(
             login: output.login,
@@ -59,6 +57,7 @@ extension LoginPresenter {
                 performLogin(email, password)
             }
             .do(onNext: { member in
+                // TODO: Save user
                 print("Successfully logged in member: \(member)")
             })
             .drive(onNext: { [unowned wireframe] _ in
@@ -70,12 +69,9 @@ extension LoginPresenter {
     private func performLogin(_ email: String, _ password: String) -> Driver<Member> {
         interactor
             .login(with: email, password)
-            .do(onError: { _ in
-                // TODO: Hide progress indicator and show validation error
-            }, onSubscribe: {
-                // TODO: Show progress indicator
-            })
-            .asDriver(onErrorDriveWith: .never())
+            .observe(on: MainScheduler.instance)
+            .handleLoadingAndError(with: wireframe)
+            .asDriver(onErrorDriveWith: .empty())
     }
 
     private func handle(
@@ -90,6 +86,7 @@ extension LoginPresenter {
                 performRegister(email, password)
             }
             .do(onNext: { member in
+                // TODO: Save user
                 print("Successfully registered member: \(member)")
             })
             .drive(onNext: { [unowned wireframe] _ in
@@ -99,14 +96,11 @@ extension LoginPresenter {
     }
 
     private func performRegister(_ email: String, _ password: String) -> Driver<Member> {
-        return interactor
+        interactor
             .register(with: email, password)
-            .do(onError: { _ in
-                // TODO: Hide progress indicator and show validation error
-            }, onSubscribe: {
-                // TODO: Show progress indicator
-            })
-            .asDriver(onErrorDriveWith: .never())
+            .observe(on: MainScheduler.instance)
+            .handleLoadingAndError(with: wireframe)
+            .asDriver(onErrorDriveWith: .empty())
     }
 
     private func onButtonsAvailable(email: Driver<String?>, password: Driver<String?>) -> Driver<Bool> {

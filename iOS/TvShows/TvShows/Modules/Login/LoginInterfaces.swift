@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol LoginWireframeInterface: WireframeInterface {
+protocol LoginWireframeInterface: WireframeInterface, Progressable {
     func navigateToHome()
 }
 

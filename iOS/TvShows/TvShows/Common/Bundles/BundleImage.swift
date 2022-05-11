@@ -7,5 +7,6 @@ public enum BundleImage: String {
     case tvShowsLogo = "ic_tv_shows_logo_white"
     case passwordInvisible = "ic_invisible"
     case passwordVisible = "ic_visible"
+    case spinner = "ic_spinner"
 
 }

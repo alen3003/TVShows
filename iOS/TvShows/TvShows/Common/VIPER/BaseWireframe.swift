@@ -1,7 +1,6 @@
 import UIKit
 
 protocol WireframeInterface: AnyObject {
-    func showAlert(with title: String?, message: String?)
 }
 
 class BaseWireframe<ViewController> where ViewController: UIViewController {

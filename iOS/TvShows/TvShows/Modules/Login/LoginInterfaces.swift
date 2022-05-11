@@ -2,13 +2,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol LoginWireframeInterface: WireframeInterface {
+protocol LoginWireframeInterface: WireframeInterface, Progressable {
     func navigateToHome()
 }
 
 protocol LoginViewInterface: ViewInterface {
-    func showTransient()
-    func hideTransient()
 }
 
 protocol LoginPresenterInterface: PresenterInterface {

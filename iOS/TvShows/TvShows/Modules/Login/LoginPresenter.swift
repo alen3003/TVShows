@@ -56,10 +56,9 @@ extension LoginPresenter {
             .flatMap { [unowned self] email, password -> Driver<Member> in
                 performLogin(email, password)
             }
-            .do(onNext: { [unowned view] member in
-                view.hideTransient()
-                print("Successfully logged in member: \(member)")
+            .do(onNext: { member in
                 // TODO: Save user
+                print("Successfully logged in member: \(member)")
             })
             .drive(onNext: { [unowned wireframe] _ in
                 wireframe.navigateToHome()
@@ -71,12 +70,7 @@ extension LoginPresenter {
         interactor
             .login(with: email, password)
             .observe(on: MainScheduler.instance)
-            .do(onError: { [unowned self] error in
-                view.hideTransient()
-                showValidationError(error)
-            }, onSubscribe: { [unowned view] in
-                view.showTransient()
-            })
+            .handleLoadingAndError(with: wireframe)
             .asDriver(onErrorDriveWith: .empty())
     }
 
@@ -91,10 +85,9 @@ extension LoginPresenter {
             .flatMap { [unowned self] email, password -> Driver<Member> in
                 performRegister(email, password)
             }
-            .do(onNext: { [unowned view] member in
-                view.hideTransient()
-                print("Successfully registered member: \(member)")
+            .do(onNext: { member in
                 // TODO: Save user
+                print("Successfully registered member: \(member)")
             })
             .drive(onNext: { [unowned wireframe] _ in
                 wireframe.navigateToHome()
@@ -106,12 +99,7 @@ extension LoginPresenter {
         interactor
             .register(with: email, password)
             .observe(on: MainScheduler.instance)
-            .do(onError: { [unowned self] error in
-                view.hideTransient()
-                showValidationError(error)
-            }, onSubscribe: { [unowned view] in
-                view.showTransient()
-            })
+            .handleLoadingAndError(with: wireframe)
             .asDriver(onErrorDriveWith: .empty())
     }
 
@@ -121,40 +109,5 @@ extension LoginPresenter {
                 !email.isEmpty && !password.isEmpty
             }
             .startWith(false)
-    }
-}
-
-private extension LoginPresenter {
-    private func showValidationError(_ error: Error) {
-        guard let loginError = LoginError(from: error as? ApiError) else {
-            wireframe.showAlert(with: "Error", message: error.localizedDescription)
-            return
-        }
-
-        wireframe.showAlert(with: "Error", message: loginError.message)
-    }
-
-    private enum LoginError {
-        case wrongEmailOrPassword(message: String)
-        case invalidCredentials(message: String)
-        case unknown(message: String)
-
-        init?(from error: ApiError?) {
-            switch error {
-            case .badRequest:
-                self = .wrongEmailOrPassword(message: "Please use different credentials")
-            case .unauthorized:
-                self = .invalidCredentials(message: "Invalid login credentials. Please try again")
-            default:
-                self = .unknown(message: "Try again later")
-            }
-        }
-
-        var message: String {
-            switch self {
-            case .wrongEmailOrPassword(let message), .invalidCredentials(let message), .unknown(let message):
-                return message
-            }
-        }
     }
 }

@@ -19,7 +19,6 @@ class SpinnerView: CustomView {
     }
 
     override func setupConstraints() {
-
     }
 
     func startAnimating() {

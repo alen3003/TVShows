@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftUI
 
 final class LoginWireframe: BaseWireframe<LoginViewController> {
 
@@ -23,7 +24,9 @@ final class LoginWireframe: BaseWireframe<LoginViewController> {
 
 extension LoginWireframe: LoginWireframeInterface {
     func navigateToHome() {
-        // TODO: Start HomeModule
-        print("Starting HomeModule")
+        let showListView = ShowsView()
+        let viewController = UIHostingController(rootView: showListView)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.setViewControllers([viewController], animated: true)
     }
 }

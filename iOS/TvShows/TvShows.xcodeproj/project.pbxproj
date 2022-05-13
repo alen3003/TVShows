@@ -27,7 +27,7 @@
 		B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A7A2822965A0061E512 /* BundleImage.swift */; };
 		B40C5A7D28229ACD0061E512 /* UIEdgeInsets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A7C28229ACD0061E512 /* UIEdgeInsets+Extensions.swift */; };
 		B40C5A8A2822CA9F0061E512 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A892822CA9F0061E512 /* UIStackView+Extensions.swift */; };
-		B40C5A8C2822CB540061E512 /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8B2822CB540061E512 /* Divider.swift */; };
+		B40C5A8C2822CB540061E512 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8B2822CB540061E512 /* DividerView.swift */; };
 		B40C5A8E2822CFA60061E512 /* InsetedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */; };
 		B40C5A922822DB570061E512 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A912822DB570061E512 /* UIColor+Extensions.swift */; };
 		B4562BBA2823BA9300BDD33E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4562BB92823BA9300BDD33E /* BaseButton.swift */; };
@@ -82,7 +82,7 @@
 		B40C5A7A2822965A0061E512 /* BundleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleImage.swift; sourceTree = "<group>"; };
 		B40C5A7C28229ACD0061E512 /* UIEdgeInsets+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extensions.swift"; sourceTree = "<group>"; };
 		B40C5A892822CA9F0061E512 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
-		B40C5A8B2822CB540061E512 /* Divider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
+		B40C5A8B2822CB540061E512 /* DividerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetedTextField.swift; sourceTree = "<group>"; };
 		B40C5A912822DB570061E512 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B4562BB92823BA9300BDD33E /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				B40C5A69282294870061E512 /* CustomView.swift */,
-				B40C5A8B2822CB540061E512 /* Divider.swift */,
+				B40C5A8B2822CB540061E512 /* DividerView.swift */,
 				B4C185C6282BF73E00787006 /* SwiftUI */,
 				B4562BB82823BA5C00BDD33E /* Buttons */,
 				B40C5A902822D0550061E512 /* TextFields */,
@@ -569,7 +569,7 @@
 				B40C5A8A2822CA9F0061E512 /* UIStackView+Extensions.swift in Sources */,
 				B40C5A8E2822CFA60061E512 /* InsetedTextField.swift in Sources */,
 				B4FD09E2282AB21800E7E2AA /* Progressable.swift in Sources */,
-				B40C5A8C2822CB540061E512 /* Divider.swift in Sources */,
+				B40C5A8C2822CB540061E512 /* DividerView.swift in Sources */,
 				B4AF9E1B2825216C0042BA4F /* ApiClientProtocol.swift in Sources */,
 				B4AF9EBA282525590042BA4F /* UserService.swift in Sources */,
 				B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */,

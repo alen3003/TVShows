@@ -14,7 +14,7 @@ class ShowsViewModel: ObservableObject {
             .receiveOnMain()
             .sink(
                 receiveCompletion: { _ in },
-                receiveValue: { shows in
+                receiveValue: { [unowned self] shows in
                     self.shows = shows
                 }
             )

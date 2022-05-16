@@ -28,6 +28,6 @@ struct ShowCard: View {
 
 struct ShowCard_Previews: PreviewProvider {
     static var previews: some View {
-        ShowCard(showModel: ShowService.getShows().first!)
+        ShowCard(showModel: ShowModel.testModel)
     }
 }

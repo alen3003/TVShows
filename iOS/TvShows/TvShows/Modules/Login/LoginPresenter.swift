@@ -57,7 +57,6 @@ extension LoginPresenter {
                 performLogin(email, password)
             }
             .do(onNext: { member in
-                // TODO: Save user
                 print("Successfully logged in member: \(member)")
             })
             .drive(onNext: { [unowned wireframe] _ in
@@ -86,7 +85,6 @@ extension LoginPresenter {
                 performRegister(email, password)
             }
             .do(onNext: { member in
-                // TODO: Save user
                 print("Successfully registered member: \(member)")
             })
             .drive(onNext: { [unowned wireframe] _ in

@@ -31,7 +31,7 @@ struct ShowList: View {
 
 struct ShowList_Previews: PreviewProvider {
     static var previews: some View {
-        ShowList(shows: ShowService.getShows())
+        ShowList(shows: [ShowModel.testModel])
             .environmentObject(AppRouter())
     }
 }

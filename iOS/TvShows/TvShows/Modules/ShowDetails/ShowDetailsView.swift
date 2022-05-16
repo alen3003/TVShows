@@ -13,6 +13,6 @@ struct ShowDetailsView: View {
 
 struct ShowDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ShowDetailsView(show: ShowService.getShows().first!)
+        ShowDetailsView(show: ShowModel.testModel)
     }
 }

@@ -14,8 +14,8 @@ protocol LoginPresenterInterface: PresenterInterface {
 }
 
 protocol LoginInteractorInterface: InteractorInterface {
-    func login(with email: String, _ password: String) -> Single<Member>
-    func register(with email: String, _ password: String) -> Single<Member>
+    func login(with email: String, _ password: String) -> Single<MemberModel>
+    func register(with email: String, _ password: String) -> Single<MemberModel>
 }
 
 enum Login {

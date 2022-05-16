@@ -10,6 +10,7 @@ struct ShowCard: View {
                 ImageView(url: URL(string: showModel.image), backgroundImage: .showBackground)
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(4)
+                    .frame(maxWidth: 90)
                 Text(showModel.title)
                     .foregroundColor(.black)
                 Spacer()
@@ -19,7 +20,7 @@ struct ShowCard: View {
 
             Divider()
                 .background(Color.gray)
-                .padding(.leading, 16)
+                .padding(.leading, 18)
                 .frame(height: 1)
         }
     }

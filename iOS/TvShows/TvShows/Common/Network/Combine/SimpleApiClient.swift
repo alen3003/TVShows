@@ -4,9 +4,11 @@ import Foundation
 class SimpleApiClient {
 
     private let urlSession: URLSession
+    private let interceptor: RequestInterceptorProtocol?
 
-    init(urlSession: URLSession) {
+    init(urlSession: URLSession, interceptor: RequestInterceptorProtocol? = nil) {
         self.urlSession = urlSession
+        self.interceptor = interceptor
     }
 
     func buildUrl<ParamsType: Encodable>(url: String, method: HTTPMethod, parameters: ParamsType?) -> URL? {
@@ -44,6 +46,12 @@ class SimpleApiClient {
             let httpBody = try? encoder.encode(parameters)
         {
             urlRequest.httpBody = httpBody
+        }
+
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        if let interceptor = interceptor {
+            interceptor.interceptHeaders.forEach { urlRequest.addValue($0.value, forHTTPHeaderField: $0.key) }
         }
 
         return urlRequest

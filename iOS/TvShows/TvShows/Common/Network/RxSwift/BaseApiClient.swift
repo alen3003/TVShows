@@ -6,6 +6,7 @@ class BaseApiClient: ApiClientProtocol {
 
     private let baseUrl: String
     private let urlSession: URLSession
+    private let userDefaults: UserDefaults = .standard
 
     init(baseUrl: String) {
         self.baseUrl = baseUrl
@@ -26,6 +27,7 @@ class BaseApiClient: ApiClientProtocol {
         executeAndReturn(path: url(with: path), method: .post, parameters: body)
     }
 
+    // swiftlint:disable closure_body_length
     private func executeAndReturn<ParamsType: Encodable, ResultType: Decodable>(
         path: String,
         method: HTTPMethod,
@@ -52,6 +54,7 @@ class BaseApiClient: ApiClientProtocol {
 
                 do {
                     let result: ResultType = try self.parse(data: data)
+                    self.saveHeaders(from: httpReponse)
                     single(.success(result))
                 } catch {
                     single(.failure(error))
@@ -88,6 +91,7 @@ class BaseApiClient: ApiClientProtocol {
                     return
                 }
 
+                self.saveHeaders(from: httpReponse)
                 observer(.completed)
 
             }
@@ -159,6 +163,22 @@ class BaseApiClient: ApiClientProtocol {
 
     private func url(with path: String) -> String {
         "\(baseUrl)\(path)"
+    }
+
+    // This is just an example and tokens should not be stored via UserDefaults in production
+    // For the simplicity we used UserDefaults
+    private func saveHeaders(from response: HTTPURLResponse?) {
+        if
+            let token = response?.allHeaderFields["access-token"],
+            let expiry = response?.allHeaderFields["expiry"],
+            let client = response?.allHeaderFields["client"],
+            let uid = response?.allHeaderFields["uid"]
+        {
+            userDefaults.set(token, forKey: Constants.UserDefaults.token)
+            userDefaults.set(expiry, forKey: Constants.UserDefaults.expiry)
+            userDefaults.set(client, forKey: Constants.UserDefaults.client)
+            userDefaults.set(uid, forKey: Constants.UserDefaults.uid)
+        }
     }
 
 }

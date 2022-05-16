@@ -11,6 +11,7 @@ class ShowsViewModel: ObservableObject {
     func fetchShows() {
         showService
             .fetchShows()
+            .map(\.shows)
             .receiveOnMain()
             .sink(
                 receiveCompletion: { _ in },

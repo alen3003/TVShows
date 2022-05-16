@@ -1,4 +1,4 @@
-struct Member: Decodable {
+struct MemberModel: Decodable {
 
     let id: String
     let email: String
@@ -8,6 +8,6 @@ struct Member: Decodable {
 
 struct MemberWrapper: Decodable {
 
-    let user: Member
+    let user: MemberModel
 
 }

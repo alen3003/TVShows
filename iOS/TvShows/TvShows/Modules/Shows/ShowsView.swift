@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ShowsView: View {
 
+    @StateObject var appRouter = AppRouter()
     @StateObject private var showsViewModel = ShowsViewModel()
 
     var body: some View {
@@ -13,6 +14,7 @@ struct ShowsView: View {
             .onAppear {
                 showsViewModel.fetchShows()
             }
+            .environmentObject(appRouter)
     }
 
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ShowCard: View {
 
-   let showModel: ShowModel
+    let showModel: ShowModel
 
     var body: some View {
         VStack {

@@ -4,10 +4,10 @@ class ShowsViewModel: ObservableObject {
 
     private let showService = ShowService.shared
 
-    private var disposables = Set<AnyCancellable>()
-
     @Published private(set) var shows: [ShowModel] = []
     @Published private(set) var error: Error?
+
+    private var disposables = Set<AnyCancellable>()
 
     func fetchShows() {
         showService

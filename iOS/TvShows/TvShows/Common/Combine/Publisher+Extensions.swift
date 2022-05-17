@@ -45,4 +45,12 @@ extension Publisher {
             .eraseToAnyPublisher()
     }
 
+    func asResult() -> AnyPublisher<Result<Output, Failure>, Never> {
+        map(Result.success)
+            .catch { error in
+                Just(.failure(error))
+            }
+            .eraseToAnyPublisher()
+    }
+
 }

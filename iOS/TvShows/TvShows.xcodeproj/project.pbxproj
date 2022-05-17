@@ -218,13 +218,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		B4AF9EBB28252DC90042BA4F /* NetworkConstants */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NetworkConstants;
-			sourceTree = "<group>";
-		};
 		B4AF9EC028254BAF0042BA4F /* TransientView */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				B4638BF82832580E003D00C0 /* Interceptors */,
-				B4AF9EBB28252DC90042BA4F /* NetworkConstants */,
 				B4AF9E1E282521920042BA4F /* Models */,
 				B4C185E1282E691800787006 /* RxSwift */,
 				B4C185E2282E692200787006 /* Combine */,

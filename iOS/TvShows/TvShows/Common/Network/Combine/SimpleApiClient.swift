@@ -99,7 +99,10 @@ class SimpleApiClient {
             .asSingle()
     }
 
-    private func parse<ResultType: Decodable>(data: Data?) -> ResultType? {
+    private func parse<ResultType: Decodable>(
+        data: Data?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) -> ResultType? {
         guard let data = data else {
             print("RESPONSE: Data does not exist...")
             return nil
@@ -108,7 +111,9 @@ class SimpleApiClient {
         do {
             let dataString = String(decoding: data, as: UTF8.self)
             print("RESPONSE: \(dataString)")
-            return try JSONDecoder().decode(ResultType.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+            return try decoder.decode(ResultType.self, from: data)
         } catch {
             print("RESPONSE: Unexpected error on decoding data to \(ResultType.self)! (\(error)")
             return nil

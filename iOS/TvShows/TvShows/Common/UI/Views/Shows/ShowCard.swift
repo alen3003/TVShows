@@ -7,7 +7,7 @@ struct ShowCard: View {
     var body: some View {
         VStack {
             HStack(alignment: .center, spacing: 24) {
-                ImageView(url: showModel.image, backgroundImage: .showBackground)
+                ImageView(url: showModel.imageUrl, backgroundImage: .showBackground)
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(4)
                 Text(showModel.title)

@@ -9,10 +9,10 @@ class LoginView: CustomView {
     var loginLabel: UILabel!
     var loginDescriptionLabel: UILabel!
     var emailTextField: UITextField!
-    var emailDivider: Divider!
+    var emailDivider: DividerView!
     var passwordTextField: UITextField!
     var revealPasswordButton: UIButton!
-    var passwordDivider: Divider!
+    var passwordDivider: DividerView!
     var loginButton: BaseButton!
     var registerButton: BaseButton!
 
@@ -45,7 +45,7 @@ class LoginView: CustomView {
         emailTextField = InsetedTextField(insets: .insets(left: 12, right: 12))
         stackView.addArrangedSubview(emailTextField)
 
-        emailDivider = Divider()
+        emailDivider = DividerView()
         stackView.addArrangedSubview(emailDivider)
 
         revealPasswordButton = UIButton()
@@ -53,7 +53,7 @@ class LoginView: CustomView {
         passwordTextField = InsetedTextField(insets: .insets(left: 12, right: 12))
         stackView.addArrangedSubview(passwordTextField)
 
-        passwordDivider = Divider()
+        passwordDivider = DividerView()
         stackView.addArrangedSubview(passwordDivider)
 
         loginButton = BaseButton()
@@ -86,7 +86,10 @@ class LoginView: CustomView {
         loginDescriptionLabel.textColor = .white
         loginDescriptionLabel.font = .systemFont(ofSize: 17, weight: .regular)
 
-        emailTextField.placeholder = "Email"
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "Email",
+            attributes: [.foregroundColor: UIColor.lightGray]
+        )
         emailTextField.textColor = .white
         emailTextField.font = .systemFont(ofSize: 17, weight: .regular)
         emailTextField.returnKeyType = .done
@@ -94,7 +97,10 @@ class LoginView: CustomView {
 
         revealPasswordButton.setImage(UIImage(with: .passwordInvisible), for: .normal)
 
-        passwordTextField.placeholder = "Password"
+        passwordTextField.attributedPlaceholder = NSAttributedString(
+            string: "Password",
+            attributes: [.foregroundColor: UIColor.lightGray]
+        )
         passwordTextField.textColor = .white
         passwordTextField.font = .systemFont(ofSize: 17, weight: .regular)
         passwordTextField.isSecureTextEntry = true

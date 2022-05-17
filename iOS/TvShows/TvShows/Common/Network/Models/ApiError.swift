@@ -1,4 +1,6 @@
 enum ApiError: Error {
+
+    case invalidUrl
     case general
     case noData
     case invalidContentType
@@ -8,4 +10,5 @@ enum ApiError: Error {
     case notFound
     case unauthorized
     case serverError
+
 }

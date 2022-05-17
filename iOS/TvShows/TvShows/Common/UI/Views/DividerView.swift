@@ -1,6 +1,6 @@
 import UIKit
 
-class Divider: CustomView {
+class DividerView: CustomView {
 
     enum DividerAxis {
         case vertical

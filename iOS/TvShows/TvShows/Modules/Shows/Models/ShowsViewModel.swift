@@ -7,18 +7,27 @@ class ShowsViewModel: ObservableObject {
     private var disposables = Set<AnyCancellable>()
 
     @Published private(set) var shows: [ShowModel] = []
+    @Published private(set) var error: Error?
 
     func fetchShows() {
         showService
             .fetchShows()
             .receiveOnMain()
-            .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [unowned self] shows in
-                    self.shows = shows
-                }
-            )
-            .store(in: &disposables)
+            .asResult()
+            .map { [unowned self] result in
+                self.mapToModel(from: result)
+            }
+            .assign(to: &$shows)
+    }
+
+    private func mapToModel(from result: Result<[ShowModel], Error>) -> [ShowModel] {
+        switch result {
+        case .success(let shows):
+            return shows
+        case .failure(let error):
+            self.error = error
+            return []
+        }
     }
 
 }

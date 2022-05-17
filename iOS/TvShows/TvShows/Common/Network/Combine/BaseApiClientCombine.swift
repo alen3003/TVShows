@@ -18,10 +18,6 @@ class BaseApiClientCombine: ApiClientProtocolCombine {
         simpleApiClient.executeAndReturn(url: url(with: path), method: .get, parameters: queryParameters)
     }
 
-    func post<ParamsType: Encodable>(path: String, body: ParamsType) -> CompletableCombine<Error> {
-        simpleApiClient.execute(url: url(with: path), method: .post, parameters: body)
-    }
-
     func post<ParamsType: Encodable, ResultType: Decodable>(
         path: String,
         body: ParamsType
@@ -29,19 +25,11 @@ class BaseApiClientCombine: ApiClientProtocolCombine {
         simpleApiClient.executeAndReturn(url: url(with: path), method: .post, parameters: body)
     }
 
-    func put<ParamsType: Encodable>(path: String, body: ParamsType) -> CompletableCombine<Error> {
-        simpleApiClient.execute(url: url(with: path), method: .put, parameters: body)
-    }
-
     func patch<ParamsType: Encodable, ResultType: Decodable>(
         path: String,
         body: ParamsType
     ) -> SingleCombine<ResultType, Error> {
         simpleApiClient.executeAndReturn(url: url(with: path), method: .patch, parameters: body)
-    }
-
-    func delete(path: String, parameters: [String: String]? = nil) -> CompletableCombine<Error> {
-        simpleApiClient.execute(url: url(with: path), method: .delete, parameters: parameters)
     }
 
     func buildUrl(path: String, method: HTTPMethod, parameters: [String: String]?) -> URL? {

@@ -3,11 +3,11 @@ import SwiftUI
 
 struct ImageView: View {
 
-    let url: URL?
+    let url: String?
     let backgroundImage: BundleImage?
 
     var body: some View {
-        KFImage(url)
+        KFImage(URL(string: url ?? ""))
             .placeholder { Image(with: backgroundImage) }
             .resizable()
     }
@@ -17,7 +17,7 @@ struct ImageView: View {
 struct ImageView_Previews: PreviewProvider {
 
     static var previews: some View {
-        ImageView(url: URL(string: ""), backgroundImage: .showBackground)
+        ImageView(url: "", backgroundImage: .showBackground)
     }
 
 }

@@ -55,7 +55,6 @@
 		B4C185E8282E695200787006 /* SimpleApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C185E7282E695100787006 /* SimpleApiClient.swift */; };
 		B4C185ED282E6A4300787006 /* Publisher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C185EA282E6A4300787006 /* Publisher+Extensions.swift */; };
 		B4C185EE282E6A4300787006 /* SingleCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C185EB282E6A4300787006 /* SingleCombine.swift */; };
-		B4C185EF282E6A4300787006 /* CompletableCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C185EC282E6A4300787006 /* CompletableCombine.swift */; };
 		B4D4773428215428001616C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D4773328215428001616C4 /* AppDelegate.swift */; };
 		B4D4773D2821542A001616C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773C2821542A001616C4 /* Assets.xcassets */; };
 		B4D477402821542A001616C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773E2821542A001616C4 /* LaunchScreen.storyboard */; };
@@ -109,7 +108,6 @@
 		B4C185E7282E695100787006 /* SimpleApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleApiClient.swift; sourceTree = "<group>"; };
 		B4C185EA282E6A4300787006 /* Publisher+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Publisher+Extensions.swift"; sourceTree = "<group>"; };
 		B4C185EB282E6A4300787006 /* SingleCombine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleCombine.swift; sourceTree = "<group>"; };
-		B4C185EC282E6A4300787006 /* CompletableCombine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompletableCombine.swift; sourceTree = "<group>"; };
 		B4D4773028215428001616C4 /* TvShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TvShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4D4773328215428001616C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4D4773C2821542A001616C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 		B4C185E9282E6A3500787006 /* Combine */ = {
 			isa = PBXGroup;
 			children = (
-				B4C185EC282E6A4300787006 /* CompletableCombine.swift */,
 				B4C185EA282E6A4300787006 /* Publisher+Extensions.swift */,
 				B4C185EB282E6A4300787006 /* SingleCombine.swift */,
 			);
@@ -573,7 +570,6 @@
 				B4AF9E1B2825216C0042BA4F /* ApiClientProtocol.swift in Sources */,
 				B4AF9EBA282525590042BA4F /* UserService.swift in Sources */,
 				B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */,
-				B4C185EF282E6A4300787006 /* CompletableCombine.swift in Sources */,
 				B4AF9E18282520520042BA4F /* Member.swift in Sources */,
 				B4C185E8282E695200787006 /* SimpleApiClient.swift in Sources */,
 				B40C5A68282291FB0061E512 /* UIView+Corners.swift in Sources */,

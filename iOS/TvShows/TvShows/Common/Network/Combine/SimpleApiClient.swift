@@ -49,38 +49,6 @@ class SimpleApiClient {
         return urlRequest
     }
 
-    func execute<ParamsType: Encodable>(
-        url: String,
-        method: HTTPMethod,
-        parameters: ParamsType? = nil
-    ) -> CompletableCombine<Error> {
-        guard let request = buildRequest(url: url, method: method, parameters: parameters) else {
-            return .error(error: ApiError.invalidUrl)
-        }
-
-        return urlSession
-            .dataTaskPublisher(for: request)
-            .tryMap { [weak self] result -> Void in
-                guard
-                    let self = self,
-                    let response = result.response as? HTTPURLResponse,
-                    let statusCode = HttpStatusCode(rawValue: response.statusCode)
-                else {
-                    throw ApiError.invalidUrl
-                }
-
-                print("RESPONSE: \(statusCode)")
-
-                if let error = self.mapToApiError(status: statusCode) {
-                    throw error
-                }
-
-                return ()
-            }
-            .asCompletable()
-            .eraseToAnyPublisher()
-    }
-
     func executeAndReturn<ParamsType: Encodable, ResultType: Decodable>(
         url: String,
         method: HTTPMethod,

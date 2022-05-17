@@ -94,6 +94,8 @@ class SimpleApiClient {
                     throw ApiError.noData
                 }
 
+                self.interceptor?.saveHeaders(from: response)
+
                 return value
             }
             .asSingle()

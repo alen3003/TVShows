@@ -5,9 +5,10 @@ class UserService {
     static let shared = UserService()
 
     private let apiClient: ApiClientProtocol
+    private let interceptor = AuthInterceptor()
 
     private init() {
-        apiClient = BaseApiClient(baseUrl: Constants.NetworkConstants.base)
+        apiClient = BaseApiClient(baseUrl: Constants.NetworkConstants.base, interceptor: interceptor)
     }
 
     func login(with email: String, _ password: String) -> Single<MemberWrapper> {

@@ -6,11 +6,12 @@ class BaseApiClient: ApiClientProtocol {
 
     private let baseUrl: String
     private let urlSession: URLSession
-    private let userDefaults: UserDefaults = .standard
+    private let interceptor: RequestInterceptorProtocol?
 
-    init(baseUrl: String) {
+    init(baseUrl: String, interceptor: RequestInterceptorProtocol? = nil) {
         self.baseUrl = baseUrl
         self.urlSession = URLSession.shared
+        self.interceptor = interceptor
     }
 
     func get<ResultType: Decodable>(
@@ -54,46 +55,11 @@ class BaseApiClient: ApiClientProtocol {
 
                 do {
                     let result: ResultType = try self.parse(data: data)
-                    self.saveHeaders(from: httpReponse)
+                    self.interceptor?.saveHeaders(from: httpReponse)
                     single(.success(result))
                 } catch {
                     single(.failure(error))
                 }
-            }
-
-            dataTask.resume()
-
-            return Disposables.create { dataTask.cancel() }
-        }
-    }
-
-    private func execute<ParamsType: Encodable>(
-        path: String,
-        method: HTTPMethod,
-        parameters: ParamsType? = nil
-    ) -> Completable {
-        .create { [weak self] observer  in
-            guard let self = self else { return Disposables.create() }
-
-            let request = self.buildRequest(path: path, method: method, parameters: parameters)
-            let dataTask = self.urlSession.dataTask(with: request) { [weak self] _, response, error in
-                guard
-                    let httpReponse = response as? HTTPURLResponse,
-                    let self = self,
-                    let statusCode = HttpStatusCode(rawValue: httpReponse.statusCode)
-                else {
-                    observer(.error(ApiError.badRequest))
-                    return
-                }
-
-                if let error = self.mapToApiError(status: statusCode) {
-                    observer(.error(error))
-                    return
-                }
-
-                self.saveHeaders(from: httpReponse)
-                observer(.completed)
-
             }
 
             dataTask.resume()
@@ -127,10 +93,17 @@ class BaseApiClient: ApiClientProtocol {
             urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         }
 
+        if let interceptor = interceptor {
+            interceptor.interceptHeaders.forEach { urlRequest.addValue($0.value, forHTTPHeaderField: $0.key) }
+        }
+
         return urlRequest
     }
 
-    private func parse<ResultType: Decodable>(data: Data?) throws -> ResultType {
+    private func parse<ResultType: Decodable>(
+        data: Data?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) throws -> ResultType {
         guard let data = data else {
             throw ApiError.noData
         }
@@ -138,7 +111,9 @@ class BaseApiClient: ApiClientProtocol {
         do {
             let dataString = String(decoding: data, as: UTF8.self)
             print("Got data: \(dataString)")
-            return try JSONDecoder().decode(ResultType.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+            return try decoder.decode(ResultType.self, from: data)
         } catch {
             throw ApiError.parseError
         }
@@ -163,22 +138,6 @@ class BaseApiClient: ApiClientProtocol {
 
     private func url(with path: String) -> String {
         "\(baseUrl)\(path)"
-    }
-
-    // This is just an example and tokens should not be stored via UserDefaults in production
-    // For the simplicity we used UserDefaults
-    private func saveHeaders(from response: HTTPURLResponse?) {
-        if
-            let token = response?.allHeaderFields["access-token"],
-            let expiry = response?.allHeaderFields["expiry"],
-            let client = response?.allHeaderFields["client"],
-            let uid = response?.allHeaderFields["uid"]
-        {
-            userDefaults.set(token, forKey: Constants.UserDefaults.token)
-            userDefaults.set(expiry, forKey: Constants.UserDefaults.expiry)
-            userDefaults.set(client, forKey: Constants.UserDefaults.client)
-            userDefaults.set(uid, forKey: Constants.UserDefaults.uid)
-        }
     }
 
 }

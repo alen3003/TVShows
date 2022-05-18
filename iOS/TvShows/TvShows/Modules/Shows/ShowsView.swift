@@ -6,15 +6,17 @@ struct ShowsView: View {
     @StateObject private var showsViewModel = ShowsViewModel()
 
     var body: some View {
-        ShowList(shows: showsViewModel.shows)
-            .navigationTitle("Shows")
-            .toolbar {
-                Image(with: .user)
-            }
-            .onAppear {
-                showsViewModel.fetchShows()
-            }
-            .environmentObject(appRouter)
+        switch showsViewModel.result {
+        case .success(let shows):
+            ShowList(shows: shows)
+                .navigationTitle("Shows")
+                .toolbar {
+                    Image(with: .user)
+                }
+                .environmentObject(appRouter)
+        case .failure:
+            Text("Something went wrong. Try again later")
+        }
     }
 
 }

@@ -4,22 +4,19 @@ class ShowsViewModel: ObservableObject {
 
     private let showService = ShowService.shared
 
-    private var disposables = Set<AnyCancellable>()
+    @Published private(set) var result: Result<[ShowModel], Error> = .success([])
 
-    @Published private(set) var shows: [ShowModel] = []
+    init() {
+        fetchShows()
+    }
 
     func fetchShows() {
         showService
             .fetchShows()
-            .map(\.shows)
             .receiveOnMain()
-            .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [unowned self] shows in
-                    self.shows = shows
-                }
-            )
-            .store(in: &disposables)
+            .map(\.shows)
+            .asResult()
+            .assign(to: &$result)
     }
 
 }

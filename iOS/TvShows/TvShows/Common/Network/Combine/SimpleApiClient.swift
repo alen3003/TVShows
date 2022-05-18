@@ -57,38 +57,6 @@ class SimpleApiClient {
         return urlRequest
     }
 
-    func execute<ParamsType: Encodable>(
-        url: String,
-        method: HTTPMethod,
-        parameters: ParamsType? = nil
-    ) -> CompletableCombine<Error> {
-        guard let request = buildRequest(url: url, method: method, parameters: parameters) else {
-            return .error(error: ApiError.invalidUrl)
-        }
-
-        return urlSession
-            .dataTaskPublisher(for: request)
-            .tryMap { [weak self] result -> Void in
-                guard
-                    let self = self,
-                    let response = result.response as? HTTPURLResponse,
-                    let statusCode = HttpStatusCode(rawValue: response.statusCode)
-                else {
-                    throw ApiError.invalidUrl
-                }
-
-                print("RESPONSE: \(statusCode)")
-
-                if let error = self.mapToApiError(status: statusCode) {
-                    throw error
-                }
-
-                return ()
-            }
-            .asCompletable()
-            .eraseToAnyPublisher()
-    }
-
     func executeAndReturn<ParamsType: Encodable, ResultType: Decodable>(
         url: String,
         method: HTTPMethod,
@@ -126,12 +94,17 @@ class SimpleApiClient {
                     throw ApiError.noData
                 }
 
+                self.interceptor?.saveHeaders(from: response)
+
                 return value
             }
             .asSingle()
     }
 
-    private func parse<ResultType: Decodable>(data: Data?) -> ResultType? {
+    private func parse<ResultType: Decodable>(
+        data: Data?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) -> ResultType? {
         guard let data = data else {
             print("RESPONSE: Data does not exist...")
             return nil
@@ -140,7 +113,9 @@ class SimpleApiClient {
         do {
             let dataString = String(decoding: data, as: UTF8.self)
             print("RESPONSE: \(dataString)")
-            return try JSONDecoder().decode(ResultType.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+            return try decoder.decode(ResultType.self, from: data)
         } catch {
             print("RESPONSE: Unexpected error on decoding data to \(ResultType.self)! (\(error)")
             return nil

@@ -17,7 +17,7 @@ enum TabItem: View {
         case .shows:
             return Image(systemName: "square.stack.fill")
         case .topRated:
-            return Image(systemName: "heart.fill")
+            return Image(systemName: "star.fill")
         }
     }
 

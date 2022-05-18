@@ -31,14 +31,16 @@
 		B40C5A8E2822CFA60061E512 /* InsetedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */; };
 		B40C5A922822DB570061E512 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A912822DB570061E512 /* UIColor+Extensions.swift */; };
 		B4562BBA2823BA9300BDD33E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4562BB92823BA9300BDD33E /* BaseButton.swift */; };
-		B4AF9E18282520520042BA4F /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9E17282520520042BA4F /* Member.swift */; };
+		B4638BFA2832585E003D00C0 /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4638BF92832585E003D00C0 /* AuthInterceptor.swift */; };
+		B4638BFC283259B3003D00C0 /* RequestInterceptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4638BFB283259B3003D00C0 /* RequestInterceptorProtocol.swift */; };
+		B4AF9E18282520520042BA4F /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9E17282520520042BA4F /* MemberModel.swift */; };
 		B4AF9E1B2825216C0042BA4F /* ApiClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9E192825216C0042BA4F /* ApiClientProtocol.swift */; };
 		B4AF9E1C2825216C0042BA4F /* BaseApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9E1A2825216C0042BA4F /* BaseApiClient.swift */; };
 		B4AF9E222825219D0042BA4F /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9E1F2825219D0042BA4F /* HttpMethod.swift */; };
 		B4AF9E232825219D0042BA4F /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9E202825219D0042BA4F /* HttpStatusCode.swift */; };
 		B4AF9E242825219D0042BA4F /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9E212825219D0042BA4F /* ApiError.swift */; };
 		B4AF9EBA282525590042BA4F /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EB9282525590042BA4F /* UserService.swift */; };
-		B4AF9EBD28252DDF0042BA4F /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EBC28252DDF0042BA4F /* NetworkConstants.swift */; };
+		B4AF9EBD28252DDF0042BA4F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EBC28252DDF0042BA4F /* Constants.swift */; };
 		B4AF9EC428254BC10042BA4F /* TransientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EC128254BC10042BA4F /* TransientView.swift */; };
 		B4AF9EC628254BC10042BA4F /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AF9EC328254BC10042BA4F /* SpinnerView.swift */; };
 		B4C185BD282BF13100787006 /* ShowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C185BC282BF13100787006 /* ShowCard.swift */; };
@@ -85,14 +87,16 @@
 		B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetedTextField.swift; sourceTree = "<group>"; };
 		B40C5A912822DB570061E512 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B4562BB92823BA9300BDD33E /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
-		B4AF9E17282520520042BA4F /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		B4638BF92832585E003D00C0 /* AuthInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
+		B4638BFB283259B3003D00C0 /* RequestInterceptorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInterceptorProtocol.swift; sourceTree = "<group>"; };
+		B4AF9E17282520520042BA4F /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		B4AF9E192825216C0042BA4F /* ApiClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientProtocol.swift; sourceTree = "<group>"; };
 		B4AF9E1A2825216C0042BA4F /* BaseApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseApiClient.swift; sourceTree = "<group>"; };
 		B4AF9E1F2825219D0042BA4F /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		B4AF9E202825219D0042BA4F /* HttpStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		B4AF9E212825219D0042BA4F /* ApiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		B4AF9EB9282525590042BA4F /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		B4AF9EBC28252DDF0042BA4F /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		B4AF9EBC28252DDF0042BA4F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B4AF9EC128254BC10042BA4F /* TransientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransientView.swift; sourceTree = "<group>"; };
 		B4AF9EC328254BC10042BA4F /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		B4C185BC282BF13100787006 /* ShowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCard.swift; sourceTree = "<group>"; };
@@ -177,10 +181,20 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		B4638BF82832580E003D00C0 /* Interceptors */ = {
+			isa = PBXGroup;
+			children = (
+				B4638BF92832585E003D00C0 /* AuthInterceptor.swift */,
+				B4638BFB283259B3003D00C0 /* RequestInterceptorProtocol.swift */,
+			);
+			path = Interceptors;
+			sourceTree = "<group>";
+		};
 		B4AF9E162825203F0042BA4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B4AF9E17282520520042BA4F /* Member.swift */,
+				B4C185BE282BF4F900787006 /* ShowModel.swift */,
+				B4AF9E17282520520042BA4F /* MemberModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,14 +218,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		B4AF9EBB28252DC90042BA4F /* NetworkConstants */ = {
-			isa = PBXGroup;
-			children = (
-				B4AF9EBC28252DDF0042BA4F /* NetworkConstants.swift */,
-			);
-			path = NetworkConstants;
-			sourceTree = "<group>";
-		};
 		B4AF9EC028254BAF0042BA4F /* TransientView */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,7 +230,7 @@
 		B4C185BA282BEF1200787006 /* Shows */ = {
 			isa = PBXGroup;
 			children = (
-				B4C185CF282E514300787006 /* Models */,
+				B4C185CF282E514300787006 /* ViewModels */,
 				B4C185CD282E50CF00787006 /* ShowsView.swift */,
 			);
 			path = Shows;
@@ -247,13 +253,12 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
-		B4C185CF282E514300787006 /* Models */ = {
+		B4C185CF282E514300787006 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				B4C185BE282BF4F900787006 /* ShowModel.swift */,
 				B4C185D0282E516100787006 /* ShowsViewModel.swift */,
 			);
-			path = Models;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B4C185E1282E691800787006 /* RxSwift */ = {
@@ -288,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				B4D4773328215428001616C4 /* AppDelegate.swift */,
+				B4AF9EBC28252DDF0042BA4F /* Constants.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -336,7 +342,7 @@
 		B4D01B4B282170D300A2B6C2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B4AF9EBB28252DC90042BA4F /* NetworkConstants */,
+				B4638BF82832580E003D00C0 /* Interceptors */,
 				B4AF9E1E282521920042BA4F /* Models */,
 				B4C185E1282E691800787006 /* RxSwift */,
 				B4C185E2282E692200787006 /* Combine */,
@@ -558,11 +564,12 @@
 				B4C185E6282E692E00787006 /* BaseApiClientCombine.swift in Sources */,
 				B4C185CE282E50CF00787006 /* ShowsView.swift in Sources */,
 				B40C5A5128226A660061E512 /* LoginWireframe.swift in Sources */,
+				B4638BFA2832585E003D00C0 /* AuthInterceptor.swift in Sources */,
 				B4D4773428215428001616C4 /* AppDelegate.swift in Sources */,
 				B4C185EE282E6A4300787006 /* SingleCombine.swift in Sources */,
 				B40C5A5A28226C7A0061E512 /* BaseWireframe.swift in Sources */,
 				B40C5A6428228DF00061E512 /* LoginView.swift in Sources */,
-				B4AF9EBD28252DDF0042BA4F /* NetworkConstants.swift in Sources */,
+				B4AF9EBD28252DDF0042BA4F /* Constants.swift in Sources */,
 				B40C5A8A2822CA9F0061E512 /* UIStackView+Extensions.swift in Sources */,
 				B40C5A8E2822CFA60061E512 /* InsetedTextField.swift in Sources */,
 				B4FD09E2282AB21800E7E2AA /* Progressable.swift in Sources */,
@@ -570,7 +577,7 @@
 				B4AF9E1B2825216C0042BA4F /* ApiClientProtocol.swift in Sources */,
 				B4AF9EBA282525590042BA4F /* UserService.swift in Sources */,
 				B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */,
-				B4AF9E18282520520042BA4F /* Member.swift in Sources */,
+				B4AF9E18282520520042BA4F /* MemberModel.swift in Sources */,
 				B4C185E8282E695200787006 /* SimpleApiClient.swift in Sources */,
 				B40C5A68282291FB0061E512 /* UIView+Corners.swift in Sources */,
 				B40C5A6028226D2C0061E512 /* InteractorInterface.swift in Sources */,
@@ -586,6 +593,7 @@
 				B4C185BD282BF13100787006 /* ShowCard.swift in Sources */,
 				B40C5A4D28226A660061E512 /* LoginInterfaces.swift in Sources */,
 				B40C5A5E28226D200061E512 /* PresenterInterface.swift in Sources */,
+				B4638BFC283259B3003D00C0 /* RequestInterceptorProtocol.swift in Sources */,
 				B4C185D3282E67AA00787006 /* ShowService.swift in Sources */,
 				B4C185ED282E6A4300787006 /* Publisher+Extensions.swift in Sources */,
 				B4FD09F0282AB50D00E7E2AA /* BaseWireframe+Progressable.swift in Sources */,

@@ -5,19 +5,20 @@ class UserService {
     static let shared = UserService()
 
     private let apiClient: ApiClientProtocol
+    private let interceptor = AuthInterceptor()
 
     private init() {
-        apiClient = BaseApiClient(baseUrl: NetworkConstants.base)
+        apiClient = BaseApiClient(baseUrl: Constants.NetworkConstants.base, interceptor: interceptor)
     }
 
     func login(with email: String, _ password: String) -> Single<MemberWrapper> {
         let params = createParameters(email, password)
-        return apiClient.post(path: NetworkConstants.login, body: params)
+        return apiClient.post(path: Constants.NetworkConstants.login, body: params)
     }
 
     func register(with email: String, _ password: String) -> Single<MemberWrapper> {
         let params = createParameters(email, password)
-        return apiClient.post(path: NetworkConstants.register, body: params)
+        return apiClient.post(path: Constants.NetworkConstants.register, body: params)
     }
 }
 

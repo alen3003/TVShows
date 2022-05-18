@@ -6,10 +6,12 @@ class BaseApiClient: ApiClientProtocol {
 
     private let baseUrl: String
     private let urlSession: URLSession
+    private let interceptor: RequestInterceptorProtocol?
 
-    init(baseUrl: String) {
+    init(baseUrl: String, interceptor: RequestInterceptorProtocol? = nil) {
         self.baseUrl = baseUrl
         self.urlSession = URLSession.shared
+        self.interceptor = interceptor
     }
 
     func get<ResultType: Decodable>(
@@ -26,6 +28,7 @@ class BaseApiClient: ApiClientProtocol {
         executeAndReturn(path: url(with: path), method: .post, parameters: body)
     }
 
+    // swiftlint:disable closure_body_length
     private func executeAndReturn<ParamsType: Encodable, ResultType: Decodable>(
         path: String,
         method: HTTPMethod,
@@ -52,44 +55,11 @@ class BaseApiClient: ApiClientProtocol {
 
                 do {
                     let result: ResultType = try self.parse(data: data)
+                    self.interceptor?.saveHeaders(from: httpReponse)
                     single(.success(result))
                 } catch {
                     single(.failure(error))
                 }
-            }
-
-            dataTask.resume()
-
-            return Disposables.create { dataTask.cancel() }
-        }
-    }
-
-    private func execute<ParamsType: Encodable>(
-        path: String,
-        method: HTTPMethod,
-        parameters: ParamsType? = nil
-    ) -> Completable {
-        .create { [weak self] observer  in
-            guard let self = self else { return Disposables.create() }
-
-            let request = self.buildRequest(path: path, method: method, parameters: parameters)
-            let dataTask = self.urlSession.dataTask(with: request) { [weak self] _, response, error in
-                guard
-                    let httpReponse = response as? HTTPURLResponse,
-                    let self = self,
-                    let statusCode = HttpStatusCode(rawValue: httpReponse.statusCode)
-                else {
-                    observer(.error(ApiError.badRequest))
-                    return
-                }
-
-                if let error = self.mapToApiError(status: statusCode) {
-                    observer(.error(error))
-                    return
-                }
-
-                observer(.completed)
-
             }
 
             dataTask.resume()
@@ -123,10 +93,17 @@ class BaseApiClient: ApiClientProtocol {
             urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         }
 
+        if let interceptor = interceptor {
+            interceptor.interceptHeaders.forEach { urlRequest.addValue($0.value, forHTTPHeaderField: $0.key) }
+        }
+
         return urlRequest
     }
 
-    private func parse<ResultType: Decodable>(data: Data?) throws -> ResultType {
+    private func parse<ResultType: Decodable>(
+        data: Data?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) throws -> ResultType {
         guard let data = data else {
             throw ApiError.noData
         }
@@ -134,7 +111,9 @@ class BaseApiClient: ApiClientProtocol {
         do {
             let dataString = String(decoding: data, as: UTF8.self)
             print("Got data: \(dataString)")
-            return try JSONDecoder().decode(ResultType.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+            return try decoder.decode(ResultType.self, from: data)
         } catch {
             throw ApiError.parseError
         }

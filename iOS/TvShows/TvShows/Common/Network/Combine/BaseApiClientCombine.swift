@@ -6,9 +6,9 @@ class BaseApiClientCombine: ApiClientProtocolCombine {
     private let baseUrl: String
     private let simpleApiClient: SimpleApiClient
 
-    init(baseUrl: String, urlSession: URLSession) {
+    init(baseUrl: String, urlSession: URLSession = .shared, interceptor: RequestInterceptorProtocol? = nil) {
         self.baseUrl = baseUrl
-        self.simpleApiClient = SimpleApiClient(urlSession: urlSession)
+        self.simpleApiClient = SimpleApiClient(urlSession: urlSession, interceptor: interceptor)
     }
 
     func get<ResultType: Decodable>(

@@ -4,9 +4,11 @@ import Foundation
 class SimpleApiClient {
 
     private let urlSession: URLSession
+    private let interceptor: RequestInterceptorProtocol?
 
-    init(urlSession: URLSession) {
+    init(urlSession: URLSession, interceptor: RequestInterceptorProtocol? = nil) {
         self.urlSession = urlSession
+        self.interceptor = interceptor
     }
 
     func buildUrl<ParamsType: Encodable>(url: String, method: HTTPMethod, parameters: ParamsType?) -> URL? {
@@ -44,6 +46,12 @@ class SimpleApiClient {
             let httpBody = try? encoder.encode(parameters)
         {
             urlRequest.httpBody = httpBody
+        }
+
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        if let interceptor = interceptor {
+            interceptor.interceptHeaders.forEach { urlRequest.addValue($0.value, forHTTPHeaderField: $0.key) }
         }
 
         return urlRequest
@@ -86,12 +94,17 @@ class SimpleApiClient {
                     throw ApiError.noData
                 }
 
+                self.interceptor?.saveHeaders(from: response)
+
                 return value
             }
             .asSingle()
     }
 
-    private func parse<ResultType: Decodable>(data: Data?) -> ResultType? {
+    private func parse<ResultType: Decodable>(
+        data: Data?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) -> ResultType? {
         guard let data = data else {
             print("RESPONSE: Data does not exist...")
             return nil
@@ -100,7 +113,9 @@ class SimpleApiClient {
         do {
             let dataString = String(decoding: data, as: UTF8.self)
             print("RESPONSE: \(dataString)")
-            return try JSONDecoder().decode(ResultType.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = keyDecodingStrategy
+            return try decoder.decode(ResultType.self, from: data)
         } catch {
             print("RESPONSE: Unexpected error on decoding data to \(ResultType.self)! (\(error)")
             return nil

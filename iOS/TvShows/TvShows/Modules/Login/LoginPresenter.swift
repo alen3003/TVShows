@@ -53,11 +53,10 @@ extension LoginPresenter {
         let inputs = Driver.combineLatest(email.compactMap { $0 }, password.compactMap { $0 })
         login
             .withLatestFrom(inputs)
-            .flatMap { [unowned self] email, password -> Driver<Member> in
+            .flatMap { [unowned self] email, password -> Driver<MemberModel> in
                 performLogin(email, password)
             }
             .do(onNext: { member in
-                // TODO: Save user
                 print("Successfully logged in member: \(member)")
             })
             .drive(onNext: { [unowned wireframe] _ in
@@ -66,7 +65,7 @@ extension LoginPresenter {
             .disposed(by: disposeBag)
     }
 
-    private func performLogin(_ email: String, _ password: String) -> Driver<Member> {
+    private func performLogin(_ email: String, _ password: String) -> Driver<MemberModel> {
         interactor
             .login(with: email, password)
             .observe(on: MainScheduler.instance)
@@ -82,11 +81,10 @@ extension LoginPresenter {
         let inputs = Driver.combineLatest(email.compactMap { $0 }, password.compactMap { $0 })
         register
             .withLatestFrom(inputs)
-            .flatMap { [unowned self] email, password -> Driver<Member> in
+            .flatMap { [unowned self] email, password -> Driver<MemberModel> in
                 performRegister(email, password)
             }
             .do(onNext: { member in
-                // TODO: Save user
                 print("Successfully registered member: \(member)")
             })
             .drive(onNext: { [unowned wireframe] _ in
@@ -95,7 +93,7 @@ extension LoginPresenter {
             .disposed(by: disposeBag)
     }
 
-    private func performRegister(_ email: String, _ password: String) -> Driver<Member> {
+    private func performRegister(_ email: String, _ password: String) -> Driver<MemberModel> {
         interactor
             .register(with: email, password)
             .observe(on: MainScheduler.instance)

@@ -14,13 +14,13 @@ final class LoginInteractor {
 // MARK: - Extensions -
 
 extension LoginInteractor: LoginInteractorInterface {
-    func login(with email: String, _ password: String) -> Single<Member> {
+    func login(with email: String, _ password: String) -> Single<MemberModel> {
         userService
             .login(with: email, password)
             .map(\.user)
     }
 
-    func register(with email: String, _ password: String) -> Single<Member> {
+    func register(with email: String, _ password: String) -> Single<MemberModel> {
         userService
             .register(with: email, password)
             .map(\.user)

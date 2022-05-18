@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ShowsView: View {
 
-    @StateObject var appRouter = AppRouter()
     @StateObject private var showsViewModel = ShowsViewModel()
 
     var body: some View {
@@ -13,7 +12,6 @@ struct ShowsView: View {
                 .toolbar {
                     Image(with: .user)
                 }
-                .environmentObject(appRouter)
         case .failure:
             Text("Something went wrong. Try again later")
         }

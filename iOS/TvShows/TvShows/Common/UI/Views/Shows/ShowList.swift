@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ShowList: View {
 
-    @EnvironmentObject var appRouter: AppRouter
+    @StateObject var appRouter = AppRouter()
     let shows: [ShowModel]
 
     var body: some View {
@@ -32,6 +32,5 @@ struct ShowList: View {
 struct ShowList_Previews: PreviewProvider {
     static var previews: some View {
         ShowList(shows: [ShowModel.testModel])
-            .environmentObject(AppRouter())
     }
 }

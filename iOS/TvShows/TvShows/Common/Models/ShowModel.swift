@@ -1,4 +1,4 @@
-struct ShowModel: Identifiable, Decodable {
+struct ShowModel: Identifiable, Decodable, Hashable {
 
     let id: String
     let title: String

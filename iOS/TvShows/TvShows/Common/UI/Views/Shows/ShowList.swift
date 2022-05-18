@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ShowList: View {
 
+    @StateObject var appRouter = AppRouter()
     let shows: [ShowModel]
 
     var body: some View {
@@ -9,6 +10,18 @@ struct ShowList: View {
             LazyVStack(spacing: 5) {
                 ForEach(shows) { show in
                     ShowCard(showModel: show)
+                        .onTapGesture {
+                            appRouter.selectedShow = show
+                        }
+
+                    NavigationLink(
+                        tag: show,
+                        selection: $appRouter.selectedShow,
+                        destination: {
+                            ShowDetailsView(show: show)
+                        },
+                        label: { EmptyView() }
+                    )
                 }
             }
         }

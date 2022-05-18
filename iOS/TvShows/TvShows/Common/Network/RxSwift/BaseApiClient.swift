@@ -140,20 +140,4 @@ class BaseApiClient: ApiClientProtocol {
         "\(baseUrl)\(path)"
     }
 
-    // This is just an example and tokens should not be stored via UserDefaults in production
-    // For the simplicity we used UserDefaults
-    private func saveHeaders(from response: HTTPURLResponse?) {
-        if
-            let token = response?.allHeaderFields["access-token"],
-            let expiry = response?.allHeaderFields["expiry"],
-            let client = response?.allHeaderFields["client"],
-            let uid = response?.allHeaderFields["uid"]
-        {
-            userDefaults.set(token, forKey: Constants.UserDefaults.token)
-            userDefaults.set(expiry, forKey: Constants.UserDefaults.expiry)
-            userDefaults.set(client, forKey: Constants.UserDefaults.client)
-            userDefaults.set(uid, forKey: Constants.UserDefaults.uid)
-        }
-    }
-
 }

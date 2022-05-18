@@ -7,7 +7,7 @@ struct ShowDetails: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                ImageView(url: URL(string: show.image), backgroundImage: .showBackground)
+                ImageView(url: show.imageUrl, backgroundImage: .showBackground)
                     .scaledToFill()
                     .padding(20)
                     .frame(height: 350)

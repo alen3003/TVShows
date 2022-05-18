@@ -24,7 +24,8 @@ final class LoginWireframe: BaseWireframe<LoginViewController> {
 
 extension LoginWireframe: LoginWireframeInterface {
     func navigateToHome() {
-        let viewController = UIHostingController(rootView: ShowsView())
+        let mainTabView = MainTabView()
+        let viewController = UIHostingController(rootView: mainTabView)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.setViewControllers([viewController], animated: true)
     }

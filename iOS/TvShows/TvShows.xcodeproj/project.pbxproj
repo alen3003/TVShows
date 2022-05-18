@@ -30,6 +30,9 @@
 		B40C5A8C2822CB540061E512 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8B2822CB540061E512 /* DividerView.swift */; };
 		B40C5A8E2822CFA60061E512 /* InsetedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */; };
 		B40C5A922822DB570061E512 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40C5A912822DB570061E512 /* UIColor+Extensions.swift */; };
+		B41E479828350FD1004B5F59 /* ShowsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E479728350FD1004B5F59 /* ShowsType.swift */; };
+		B41E479B28351A43004B5F59 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E479A28351A43004B5F59 /* MainTabView.swift */; };
+		B41E479F28351B51004B5F59 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E479E28351B51004B5F59 /* TabItem.swift */; };
 		B4562BBA2823BA9300BDD33E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4562BB92823BA9300BDD33E /* BaseButton.swift */; };
 		B4638BFA2832585E003D00C0 /* AuthInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4638BF92832585E003D00C0 /* AuthInterceptor.swift */; };
 		B4638BFC283259B3003D00C0 /* RequestInterceptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4638BFB283259B3003D00C0 /* RequestInterceptorProtocol.swift */; };
@@ -89,6 +92,9 @@
 		B40C5A8B2822CB540061E512 /* DividerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		B40C5A8D2822CFA60061E512 /* InsetedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetedTextField.swift; sourceTree = "<group>"; };
 		B40C5A912822DB570061E512 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		B41E479728350FD1004B5F59 /* ShowsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsType.swift; sourceTree = "<group>"; };
+		B41E479A28351A43004B5F59 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		B41E479E28351B51004B5F59 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		B4562BB92823BA9300BDD33E /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		B4638BF92832585E003D00C0 /* AuthInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInterceptor.swift; sourceTree = "<group>"; };
 		B4638BFB283259B3003D00C0 /* RequestInterceptorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInterceptorProtocol.swift; sourceTree = "<group>"; };
@@ -179,6 +185,23 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		B41E479928351A2C004B5F59 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				B41E479D28351B43004B5F59 /* Models */,
+				B41E479A28351A43004B5F59 /* MainTabView.swift */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		B41E479D28351B43004B5F59 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B41E479E28351B51004B5F59 /* TabItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B4562BB82823BA5C00BDD33E /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +238,7 @@
 		B4AF9E162825203F0042BA4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B41E479728350FD1004B5F59 /* ShowsType.swift */,
 				B4C185BE282BF4F900787006 /* ShowModel.swift */,
 				B4AF9E17282520520042BA4F /* MemberModel.swift */,
 			);
@@ -252,8 +276,8 @@
 		B4C185BA282BEF1200787006 /* Shows */ = {
 			isa = PBXGroup;
 			children = (
-				B4C185CF282E514300787006 /* ViewModels */,
 				B4C185CD282E50CF00787006 /* ShowsView.swift */,
+				B4C185D0282E516100787006 /* ShowsViewModel.swift */,
 			);
 			path = Shows;
 			sourceTree = "<group>";
@@ -273,14 +297,6 @@
 				B4C185C7282BF75900787006 /* ImageView.swift */,
 			);
 			path = SwiftUI;
-			sourceTree = "<group>";
-		};
-		B4C185CF282E514300787006 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				B4C185D0282E516100787006 /* ShowsViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B4C185E1282E691800787006 /* RxSwift */ = {
@@ -339,9 +355,10 @@
 		B4D01B4728216F2C00A2B6C2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B4638BFD28326424003D00C0 /* ShowDetails */,
-				B4C185BA282BEF1200787006 /* Shows */,
 				B40C5A4728226A080061E512 /* Login */,
+				B41E479928351A2C004B5F59 /* MainTab */,
+				B4C185BA282BEF1200787006 /* Shows */,
+				B4638BFD28326424003D00C0 /* ShowDetails */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -606,9 +623,11 @@
 				B40C5A7B2822965A0061E512 /* BundleImage.swift in Sources */,
 				B4638C0428327960003D00C0 /* AppRouter.swift in Sources */,
 				B4AF9E18282520520042BA4F /* MemberModel.swift in Sources */,
+				B41E479828350FD1004B5F59 /* ShowsType.swift in Sources */,
 				B4C185E8282E695200787006 /* SimpleApiClient.swift in Sources */,
 				B40C5A68282291FB0061E512 /* UIView+Corners.swift in Sources */,
 				B40C5A6028226D2C0061E512 /* InteractorInterface.swift in Sources */,
+				B41E479F28351B51004B5F59 /* TabItem.swift in Sources */,
 				B4562BBA2823BA9300BDD33E /* BaseButton.swift in Sources */,
 				B4AF9E242825219D0042BA4F /* ApiError.swift in Sources */,
 				B4C185C8282BF75A00787006 /* ImageView.swift in Sources */,
@@ -620,6 +639,7 @@
 				B4C185CA282BF89100787006 /* Image+Extension.swift in Sources */,
 				B4C185BD282BF13100787006 /* ShowCard.swift in Sources */,
 				B40C5A4D28226A660061E512 /* LoginInterfaces.swift in Sources */,
+				B41E479B28351A43004B5F59 /* MainTabView.swift in Sources */,
 				B40C5A5E28226D200061E512 /* PresenterInterface.swift in Sources */,
 				B4638BFC283259B3003D00C0 /* RequestInterceptorProtocol.swift in Sources */,
 				B4C185D3282E67AA00787006 /* ShowService.swift in Sources */,

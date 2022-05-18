@@ -15,8 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         guard let window = window else { return false }
 
+        startApp(in: window)
+
+        return true
+    }
+
+    private func startApp(in window: UIWindow) {
         if shouldShowHome {
-            let viewController = UIHostingController(rootView: ShowsView())
+            let mainTab = MainTabView()
+            let viewController = UIHostingController(rootView: mainTab)
             navigationController.navigationBar.prefersLargeTitles = true
             navigationController.setViewControllers([viewController], animated: false)
         } else {
@@ -26,8 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-
-        return true
     }
 
 }

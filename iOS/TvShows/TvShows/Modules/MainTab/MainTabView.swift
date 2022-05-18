@@ -18,6 +18,9 @@ struct MainTabView: View {
                 .tag(ShowsType.topRated.title)
         }
         .navigationTitle(title)
+        .toolbar {
+            Image(with: .user)
+        }
     }
 
 }

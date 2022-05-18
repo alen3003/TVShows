@@ -9,21 +9,19 @@ struct ShowDetails: View {
             VStack(alignment: .leading, spacing: 20) {
                 ImageView(url: show.imageUrl, backgroundImage: .showBackground)
                     .scaledToFill()
-                    .padding(20)
                     .frame(height: 350)
-                    .cornerRadius(10)
                     .clipped()
+                    .cornerRadius(10)
 
                 Text(show.showDescription)
                     .font(.system(size: 17, weight: .regular))
                     .foregroundColor(.black)
-                    .padding([.leading, .trailing], 20)
 
                 Text("Reviews")
                     .font(.system(size: 24, weight: .bold))
                     .foregroundColor(.black)
-                    .padding([.leading, .trailing], 20)
             }
+            .padding(20)
         }
     }
 

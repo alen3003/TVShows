@@ -8,7 +8,9 @@ struct ShowCard: View {
         VStack {
             HStack(alignment: .center, spacing: 24) {
                 ImageView(url: showModel.imageUrl, backgroundImage: .showBackground)
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFill()
+                    .frame(width: 64, height: 90)
+                    .clipped()
                     .cornerRadius(4)
                 Text(showModel.title)
                     .foregroundColor(.black)

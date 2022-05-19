@@ -6,7 +6,7 @@ struct ShowDetailsView: View {
 
     var body: some View {
         ShowDetails(show: show)
-            .navigationTitle(show.title)
+            .navigationBarTitle(show.title, displayMode: .automatic)
     }
 
 }

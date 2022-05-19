@@ -8,6 +8,7 @@ enum Constants {
         static let login = "/users/sign_in"
         static let register = "/users"
         static let shows = "/shows"
+        static let topRated = "/shows/top_rated"
 
     }
 

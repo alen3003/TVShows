@@ -15,21 +15,27 @@ class BaseApiClientCombine: ApiClientProtocolCombine {
         path: String,
         queryParameters: [String: String]? = nil
     ) -> SingleCombine<ResultType, Error> {
-        simpleApiClient.executeAndReturn(url: url(with: path), method: .get, parameters: queryParameters)
+        simpleApiClient
+            .executeAndReturn(url: url(with: path), method: .get, parameters: queryParameters)
+            .subscribeOnBackground()
     }
 
     func post<ParamsType: Encodable, ResultType: Decodable>(
         path: String,
         body: ParamsType
     ) -> SingleCombine<ResultType, Error> {
-        simpleApiClient.executeAndReturn(url: url(with: path), method: .post, parameters: body)
+        simpleApiClient
+            .executeAndReturn(url: url(with: path), method: .post, parameters: body)
+            .subscribeOnBackground()
     }
 
     func patch<ParamsType: Encodable, ResultType: Decodable>(
         path: String,
         body: ParamsType
     ) -> SingleCombine<ResultType, Error> {
-        simpleApiClient.executeAndReturn(url: url(with: path), method: .patch, parameters: body)
+        simpleApiClient
+            .executeAndReturn(url: url(with: path), method: .patch, parameters: body)
+            .subscribeOnBackground()
     }
 
     func buildUrl(path: String, method: HTTPMethod, parameters: [String: String]?) -> URL? {

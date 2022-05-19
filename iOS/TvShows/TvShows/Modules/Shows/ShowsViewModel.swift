@@ -5,31 +5,21 @@ class ShowsViewModel: ObservableObject {
     private let showService = ShowService.shared
 
     @Published private(set) var result: Result<[ShowModel], Error> = .success([])
-    @Published private(set) var type: ShowsType
 
     init(type: ShowsType) {
-        self.type = type
+        fetchShows(for: type)
+    }
 
+    private func fetchShows(for type: ShowsType) {
+        let shows: SingleCombine<ShowWrapper, Error>
         switch type {
         case .shows:
-            fetchShows()
+            shows = showService.fetchShows()
         case .topRated:
-            fetchTopRated()
+            shows = showService.fetchTopRated()
         }
-    }
 
-    private func fetchShows() {
-        showService
-            .fetchShows()
-            .receiveOnMain()
-            .map(\.shows)
-            .asResult()
-            .assign(to: &$result)
-    }
-
-    private func fetchTopRated() {
-        showService
-            .fetchTopRated()
+        shows
             .receiveOnMain()
             .map(\.shows)
             .asResult()

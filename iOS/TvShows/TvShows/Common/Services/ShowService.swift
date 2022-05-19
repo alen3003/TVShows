@@ -10,15 +10,11 @@ class ShowService {
     }
 
     func fetchShows() -> SingleCombine<ShowWrapper, Error> {
-        apiClient
-            .get(path: Constants.NetworkConstants.shows)
-            .subscribeOnBackground()
+        apiClient.get(path: Constants.NetworkConstants.shows)
     }
 
     func fetchTopRated() -> SingleCombine<ShowWrapper, Error> {
-        apiClient
-            .get(path: Constants.NetworkConstants.topRated)
-            .subscribeOnBackground()
+        apiClient.get(path: Constants.NetworkConstants.topRated)
     }
 
 }

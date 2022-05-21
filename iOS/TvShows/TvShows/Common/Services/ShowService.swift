@@ -23,13 +23,3 @@ class ShowService {
     }
 
 }
-
-private extension ShowService {
-
-    func createParameters(showId: String) -> [String : String] {
-        var params: [String : String] = [:]
-        params["show_id"] = showId
-        return params
-    }
-
-}

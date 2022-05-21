@@ -4,7 +4,7 @@ import SwiftUI
 struct ImageView: View {
 
     let url: String?
-    let backgroundImage: BundleImage?
+    var backgroundImage: BundleImage?
 
     var body: some View {
         KFImage(URL(string: url ?? ""))
@@ -15,9 +15,7 @@ struct ImageView: View {
 }
 
 struct ImageView_Previews: PreviewProvider {
-
     static var previews: some View {
-        ImageView(url: "", backgroundImage: .showBackground)
+        ImageView(url: "")
     }
-
 }

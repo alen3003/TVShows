@@ -10,5 +10,6 @@ public enum BundleImage: String {
     case spinner = "ic_spinner"
     case showBackground = "image_placeholder"
     case user = "ic_user"
+    case userFilled = "ic_user_filled"
 
 }

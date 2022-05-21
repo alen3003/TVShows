@@ -17,4 +17,19 @@ class ShowService {
         apiClient.get(path: Constants.NetworkConstants.topRated)
     }
 
+    func fetchReviews(showId: String) -> SingleCombine<ReviewWrapper, Error> {
+        let path = String(format: Constants.NetworkConstants.reviews, showId)
+        return apiClient.get(path: path)
+    }
+
+}
+
+private extension ShowService {
+
+    func createParameters(showId: String) -> [String : String] {
+        var params: [String : String] = [:]
+        params["show_id"] = showId
+        return params
+    }
+
 }

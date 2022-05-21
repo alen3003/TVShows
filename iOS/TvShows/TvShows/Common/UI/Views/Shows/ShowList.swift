@@ -18,7 +18,7 @@ struct ShowList: View {
                         tag: show,
                         selection: $appRouter.selectedShow,
                         destination: {
-                            ShowDetailsView(show: show)
+                            ShowDetailsView(viewModel: .init(showId: show.id), show: show)
                         },
                         label: { EmptyView() }
                     )

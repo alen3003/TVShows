@@ -15,15 +15,17 @@ class ShowDetailsViewModel: ObservableObject {
             .fetchReviews(showId: showId)
             .receiveOnMain()
             .map(\.reviews)
-            .map { [unowned self] reviews in
-                self.removeEmpty(from: reviews)
-            }
+            .map(\.withoutEmpty)
             .asResult()
             .assign(to: &$result)
     }
 
-    private func removeEmpty(from reviews: [ReviewModel]) -> [ReviewModel] {
-        reviews
+}
+
+extension Array where Element == ReviewModel {
+
+    var withoutEmpty: [ReviewModel] {
+        self
             .filter { !($0.comment?.isEmpty ?? true) }
     }
 

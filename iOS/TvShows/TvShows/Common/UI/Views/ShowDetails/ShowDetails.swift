@@ -6,12 +6,10 @@ struct ShowDetails: View {
     let reviews: [ReviewModel]
 
     var body: some View {
-        GeometryReader { proxy in
-            ScrollView {
-                header
-                reviewList
-                footer(buttonSize: CGSize(width: proxy.size.width - 40, height: 48))
-            }
+        ScrollView {
+            header
+            reviewList
+            footer
         }
     }
 
@@ -50,7 +48,7 @@ struct ShowDetails: View {
     }
 
     @ViewBuilder
-    func footer(buttonSize: CGSize) -> some View {
+    var footer: some View {
         VStack(alignment: .leading, spacing: 20) {
             if reviews.isEmpty {
                 Text("No reviews yet.")
@@ -60,7 +58,8 @@ struct ShowDetails: View {
 
             Button("Write a Review") {
             }
-            .frame(width: buttonSize.width, height: buttonSize.height)
+            .frame(maxWidth: .infinity)
+            .frame(height: 48)
             .background(Color(.backgroundViolet))
             .foregroundColor(.white)
             .cornerRadius(24)

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ShowDetailsView: View {
 
-    @StateObject var viewModel: ShowDetailsViewModel
+    @ObservedObject var viewModel: ShowDetailsViewModel
     let show: ShowModel
 
     var body: some View {

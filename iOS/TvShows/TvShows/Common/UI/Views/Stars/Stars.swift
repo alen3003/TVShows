@@ -7,10 +7,10 @@ struct Stars: View {
     var body: some View {
         HStack(alignment: .center, spacing: 4) {
             ForEach(0..<rate, id: \.self) { _ in
-                StarIcon.normal
+                StarIcon.filled
             }
             ForEach(rate..<5, id: \.self) { _ in
-                StarIcon.filled
+                StarIcon.normal
             }
         }
     }

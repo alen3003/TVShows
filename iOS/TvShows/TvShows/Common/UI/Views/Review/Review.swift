@@ -11,18 +11,22 @@ struct Review: View {
                     .scaledToFill()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
-                Text(review.user.email)
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundColor(Color.gray)
-                Spacer()
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(review.user.email)
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundColor(Color.gray)
+                    Stars(rate: review.rating)
+                }
             }
 
-            Text(review.comment ?? "")
-                .font(.system(size: 17, weight: .regular))
+            VStack(alignment: .leading, spacing: 14) {
+                Text(review.comment ?? "")
+                    .font(.system(size: 17, weight: .regular))
 
-            Divider()
-                .background(Color.gray)
-                .frame(height: 1)
+                Divider()
+                    .background(Color.gray)
+                    .frame(height: 1)
+            }
         }
     }
 

@@ -30,11 +30,15 @@ struct ShowDetails: View {
                 .font(.system(size: 24, weight: .bold))
                 .foregroundColor(.black)
 
-            Text("\(show.reviewCount) REVIEWS, \(show.averageRating) AVERAGE")
-                .font(.system(size: 14, weight: .regular))
-                .foregroundColor(Color.gray)
+            VStack(alignment: .leading, spacing: 10) {
+                Text("\(show.reviewCount) REVIEWS, \(show.averageRating) AVERAGE")
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundColor(Color.gray)
+
+                Stars(rate: show.averageRating)
+            }
         }
-        .padding(20)
+        .padding([.top, .leading, .trailing], 20)
     }
 
     @ViewBuilder
@@ -44,7 +48,8 @@ struct ShowDetails: View {
                 Review(review: review)
             }
         }
-        .padding(20)
+        .padding([.leading, .trailing], 20)
+        .padding(.top, 35)
     }
 
     @ViewBuilder
@@ -64,7 +69,8 @@ struct ShowDetails: View {
             .foregroundColor(.white)
             .cornerRadius(24)
         }
-        .padding(20)
+        .padding([.leading, .trailing], 20)
+        .padding(.top, 35)
     }
 
 }

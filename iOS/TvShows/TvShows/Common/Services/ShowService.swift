@@ -17,4 +17,9 @@ class ShowService {
         apiClient.get(path: Constants.NetworkConstants.topRated)
     }
 
+    func fetchReviews(showId: String) -> SingleCombine<ReviewWrapper, Error> {
+        let path = String(format: Constants.NetworkConstants.reviews, showId)
+        return apiClient.get(path: path)
+    }
+
 }

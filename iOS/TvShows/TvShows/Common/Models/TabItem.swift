@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum TabItem: View {
+
     case shows
     case topRated
 
@@ -29,4 +30,5 @@ enum TabItem: View {
             return Text("Top Rated")
         }
     }
+
 }

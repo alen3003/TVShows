@@ -70,6 +70,7 @@
 		B4D4773D2821542A001616C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773C2821542A001616C4 /* Assets.xcassets */; };
 		B4D477402821542A001616C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D4773E2821542A001616C4 /* LaunchScreen.storyboard */; };
 		B4D583C4283B9A640012F2C8 /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D583C3283B9A640012F2C8 /* Stars.swift */; };
+		B4D583C6283BA17A0012F2C8 /* StarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D583C5283BA17A0012F2C8 /* StarIcon.swift */; };
 		B4FD09E2282AB21800E7E2AA /* Progressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FD09E1282AB21800E7E2AA /* Progressable.swift */; };
 		B4FD09F0282AB50D00E7E2AA /* BaseWireframe+Progressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FD09EF282AB50D00E7E2AA /* BaseWireframe+Progressable.swift */; };
 		B4FD09F6282ABE0900E7E2AA /* Single+Progressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FD09F5282ABE0900E7E2AA /* Single+Progressable.swift */; };
@@ -137,6 +138,7 @@
 		B4D4773F2821542A001616C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4D477412821542A001616C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4D583C3283B9A640012F2C8 /* Stars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stars.swift; sourceTree = "<group>"; };
+		B4D583C5283BA17A0012F2C8 /* StarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarIcon.swift; sourceTree = "<group>"; };
 		B4FD09E1282AB21800E7E2AA /* Progressable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progressable.swift; sourceTree = "<group>"; };
 		B4FD09EF282AB50D00E7E2AA /* BaseWireframe+Progressable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseWireframe+Progressable.swift"; sourceTree = "<group>"; };
 		B4FD09F5282ABE0900E7E2AA /* Single+Progressable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+Progressable.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				B4D583C3283B9A640012F2C8 /* Stars.swift */,
+				B4D583C5283BA17A0012F2C8 /* StarIcon.swift */,
 			);
 			path = Stars;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				B4AF9EC428254BC10042BA4F /* TransientView.swift in Sources */,
 				B40C5A4E28226A660061E512 /* LoginPresenter.swift in Sources */,
 				B4AF9E222825219D0042BA4F /* HttpMethod.swift in Sources */,
+				B4D583C6283BA17A0012F2C8 /* StarIcon.swift in Sources */,
 				B4FD09F6282ABE0900E7E2AA /* Single+Progressable.swift in Sources */,
 				B40C5A5C28226CDA0061E512 /* ViewInterface.swift in Sources */,
 				B40C5A6A282294870061E512 /* CustomView.swift in Sources */,

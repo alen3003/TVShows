@@ -7,18 +7,10 @@ struct Stars: View {
     var body: some View {
         HStack(alignment: .center, spacing: 4) {
             ForEach(0..<rate, id: \.self) { _ in
-                Image(systemName:"star.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(Color(.backgroundViolet))
-                    .frame(maxWidth: 22, maxHeight: 22)
+                StarIcon.normal
             }
             ForEach(rate..<5, id: \.self) { _ in
-                Image(systemName:"star")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(Color(.backgroundViolet))
-                    .frame(maxWidth: 22, maxHeight: 22)
+                StarIcon.filled
             }
         }
     }

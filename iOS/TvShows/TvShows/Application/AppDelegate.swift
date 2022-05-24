@@ -5,7 +5,8 @@ import SwiftUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private let navigationController = UINavigationController()
+
+    private let appModule = AppModule.shared
 
     func application(
         _ application: UIApplication,
@@ -13,34 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        guard let window = window else { return false }
-
-        startApp(in: window)
-
-        return true
-    }
-
-    private func startApp(in window: UIWindow) {
-        if shouldShowHome {
-            let mainTab = MainTabView()
-            let viewController = UIHostingController(rootView: mainTab)
-            navigationController.navigationBar.prefersLargeTitles = true
-            navigationController.setViewControllers([viewController], animated: false)
-        } else {
-            let viewController = LoginWireframe().viewController
-            navigationController.setViewControllers([viewController], animated: false)
+        if let window = window {
+            appModule.start(in: window)
         }
 
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
-    }
-
-}
-
-private extension AppDelegate {
-
-    var shouldShowHome: Bool {
-        UserDefaults.standard.string(forKey: Constants.UserDefaults.token) != nil
+        return true
     }
 
 }

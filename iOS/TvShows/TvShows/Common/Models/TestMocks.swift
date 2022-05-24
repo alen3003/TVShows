@@ -1,3 +1,11 @@
+extension MemberModel {
+
+    static var testModel: MemberModel {
+        MemberModel(id: "", email: "sebalj.alen@gmail.com", imageUrl: "")
+    }
+
+}
+
 extension ShowModel {
 
     static var testModel: ShowModel {

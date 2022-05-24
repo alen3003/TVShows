@@ -29,6 +29,6 @@ struct ShowCard: View {
 
 struct ShowCard_Previews: PreviewProvider {
     static var previews: some View {
-        ShowCard(showModel: ShowModel.testModel)
+        ShowCard(showModel: .testModel)
     }
 }

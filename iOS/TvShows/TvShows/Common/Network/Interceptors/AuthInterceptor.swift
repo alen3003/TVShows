@@ -44,3 +44,14 @@ class AuthInterceptor: RequestInterceptorProtocol {
     }
 
 }
+
+extension AuthInterceptor {
+
+    static func deleteAuthHeaders() {
+        UserDefaults.standard.removeObject(forKey: AuthHeaders.accessToken)
+        UserDefaults.standard.removeObject(forKey: AuthHeaders.uid)
+        UserDefaults.standard.removeObject(forKey: AuthHeaders.expiry)
+        UserDefaults.standard.removeObject(forKey: AuthHeaders.client)
+    }
+
+}

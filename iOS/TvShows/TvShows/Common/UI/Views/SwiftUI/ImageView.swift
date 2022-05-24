@@ -8,7 +8,10 @@ struct ImageView: View {
 
     var body: some View {
         KFImage(URL(string: url ?? ""))
-            .placeholder { Image(with: backgroundImage) }
+            .placeholder {
+                Image(with: backgroundImage)?
+                    .resizable()
+            }
             .resizable()
     }
 

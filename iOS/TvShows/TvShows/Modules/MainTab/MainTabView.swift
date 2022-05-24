@@ -3,6 +3,7 @@ import SwiftUI
 struct MainTabView: View {
 
     @State var title = ShowsType.shows.title
+    @StateObject var appRouter = AppRouter()
 
     var body: some View {
         TabView(selection: $title) {
@@ -20,6 +21,9 @@ struct MainTabView: View {
         .navigationTitle(title)
         .toolbar {
             Image(with: .user)
+                .onTapGesture {
+                    appRouter.selectedSettings = true
+                }
         }
     }
 

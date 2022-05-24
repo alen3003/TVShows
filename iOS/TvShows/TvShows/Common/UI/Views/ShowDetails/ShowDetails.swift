@@ -77,6 +77,6 @@ struct ShowDetails: View {
 
 struct ShowDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ShowDetails(show: ShowModel.testModel, reviews: [.testModel, .testModel, .testModel])
+        ShowDetails(show: .testModel, reviews: [.testModel, .testModel, .testModel])
     }
 }

@@ -3,7 +3,10 @@ import SwiftUI
 struct ShowList: View {
 
     @StateObject var appRouter = AppRouter()
+
     let shows: [ShowModel]
+
+    var onLastItemDisplayed = {}
 
     var body: some View {
         ScrollView {
@@ -12,6 +15,11 @@ struct ShowList: View {
                     ShowCard(showModel: show)
                         .onTapGesture {
                             appRouter.selectedShow = show
+                        }
+                        .onAppear {
+                            if isLastItem(show: show) {
+                                onLastItemDisplayed()
+                            }
                         }
 
                     NavigationLink(
@@ -25,6 +33,10 @@ struct ShowList: View {
                 }
             }
         }
+    }
+
+    func isLastItem(show: ShowModel) -> Bool {
+        show == shows.last
     }
 
 }

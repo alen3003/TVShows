@@ -7,7 +7,12 @@ struct ShowsView: View {
     var body: some View {
         switch showsViewModel.result {
         case .success(let shows):
-            ShowList(shows: shows)
+            ShowList(
+                shows: shows,
+                onLastItemDisplayed: {
+                    showsViewModel.fetchMoreShows()
+                }
+            )
         case .failure:
             Text("Something went wrong. Try again later")
         }

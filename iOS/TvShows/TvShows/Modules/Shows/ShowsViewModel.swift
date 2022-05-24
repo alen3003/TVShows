@@ -1,27 +1,41 @@
 import Combine
 
-class ShowsViewModel: ObservableObject {
+final class ShowsViewModel: ObservableObject {
 
     private let showService = ShowService.shared
 
     @Published private(set) var result: Result<[ShowModel], Error> = .success([])
+    private let paginator = PaginatedResult(startingPage: 1, itemsPerPage: 20)
+
+    private let type: ShowsType
 
     init(type: ShowsType) {
-        fetchShows(for: type)
+        self.type = type
+
+        fetchShows()
     }
 
-    private func fetchShows(for type: ShowsType) {
-        let shows: SingleCombine<ShowWrapper, Error>
+    func fetchMoreShows() {
+        guard paginator.shouldFetchNextPage else { return }
+
+        fetchShows()
+    }
+
+    private func fetchShows() {
+        let showWrapper: SingleCombine<ShowWrapper, Error>
         switch type {
         case .shows:
-            shows = showService.fetchShows()
+            showWrapper = showService.fetchShows(paginator: paginator)
         case .topRated:
-            shows = showService.fetchTopRated()
+            showWrapper = showService.fetchTopRated(paginator: paginator)
         }
 
-        shows
+        showWrapper
             .receiveOnMain()
             .map(\.shows)
+            .compactMap { [unowned self] models in
+                try? result.get() + models
+            }
             .asResult()
             .assign(to: &$result)
     }

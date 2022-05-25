@@ -1,3 +1,5 @@
+import Combine
+
 class ShowService {
 
     static let shared = ShowService()
@@ -9,29 +11,33 @@ class ShowService {
         apiClient = BaseApiClientCombine(baseUrl: Constants.NetworkConstants.base, interceptor: interceptor)
     }
 
-    func fetchShows(paginator: PaginatedResult? = nil) -> SingleCombine<ShowWrapper, Error> {
+    func fetchShows(paginator: PaginatedResult) -> SingleCombine<ShowWrapper, Error> {
         apiClient
             .get(path: Constants.NetworkConstants.shows, queryParameters: createParameters(paginator: paginator))
-            .handleEvents(receiveOutput: { showWrapper in
-                paginator?.setShouldFetchNextPage(showWrapper.shows.count == showWrapper.meta?.pagination.items)
-                paginator?.increaseCurrentPage()
-            })
-            .asSingle()
+            .handle(with: paginator)
     }
 
-    func fetchTopRated(paginator: PaginatedResult? = nil) -> SingleCombine<ShowWrapper, Error> {
+    func fetchTopRated(paginator: PaginatedResult) -> SingleCombine<ShowWrapper, Error> {
         apiClient
             .get(path: Constants.NetworkConstants.topRated, queryParameters: createParameters(paginator: paginator))
-            .handleEvents(receiveOutput: { showWrapper in
-                paginator?.setShouldFetchNextPage(showWrapper.shows.count == showWrapper.meta?.pagination.items)
-                paginator?.increaseCurrentPage()
-            })
-            .asSingle()
+            .handle(with: paginator)
     }
 
     func fetchReviews(showId: String) -> SingleCombine<ReviewWrapper, Error> {
         let path = String(format: Constants.NetworkConstants.reviews, showId)
         return apiClient.get(path: path)
+    }
+
+}
+
+private extension Publisher where Output == ShowWrapper, Failure == Error {
+
+    func handle(with paginator: PaginatedResult) -> SingleCombine<ShowWrapper, Error> {
+        handleEvents(receiveOutput: { showWrapper in
+            paginator.setShouldFetchNextPage(showWrapper.shows.count == showWrapper.meta?.pagination.items)
+            paginator.increaseCurrentPage()
+        })
+        .asSingle()
     }
 
 }

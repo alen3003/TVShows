@@ -19,17 +19,22 @@ struct Settings: View {
 
                 userProfileView
 
-                Button("Logout") {
-                    presentationMode.wrappedValue.dismiss()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        AppModule.shared.eraseAndPopToRoot()
+                Button(
+                    action: {
+                        presentationMode.wrappedValue.dismiss()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                            AppModule.shared.eraseAndPopToRoot()
+                        }
+                    },
+                    label: {
+                        Text("Logout")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 48)
+                            .background(Color(.backgroundViolet))
+                            .foregroundColor(.white)
+                            .cornerRadius(24)
                     }
-                }
-                .frame(maxWidth: .infinity)
-                .frame(height: 48)
-                .background(Color(.backgroundViolet))
-                .foregroundColor(.white)
-                .cornerRadius(24)
+                )
 
                 Spacer()
             }

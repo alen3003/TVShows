@@ -60,14 +60,17 @@ struct ShowDetails: View {
                     .font(.system(size: 17, weight: .regular))
                     .foregroundColor(.gray)
             }
-
-            Button("Write a Review") {
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 48)
-            .background(Color(.backgroundViolet))
-            .foregroundColor(.white)
-            .cornerRadius(24)
+            Button(
+                action: {},
+                label: {
+                    Text("Write a Review")
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 48)
+                        .background(Color(.backgroundViolet))
+                        .foregroundColor(.white)
+                        .cornerRadius(24)
+                }
+            )
         }
         .padding([.leading, .trailing], 20)
         .padding(.top, 35)

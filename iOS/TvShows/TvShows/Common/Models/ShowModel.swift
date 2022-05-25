@@ -1,4 +1,4 @@
-struct ShowModel: Identifiable, Decodable, Hashable {
+struct ShowModel: Identifiable, Decodable, Hashable, Equatable {
 
     let id: String
     let title: String
@@ -6,6 +6,10 @@ struct ShowModel: Identifiable, Decodable, Hashable {
     let imageUrl: String
     let averageRating: Int
     let reviewCount: Int
+
+    static func == (lhs: ShowModel, rhs: ShowModel) -> Bool {
+        lhs.id == rhs.id
+    }
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -21,24 +25,6 @@ struct ShowModel: Identifiable, Decodable, Hashable {
 struct ShowWrapper: Decodable {
 
     let shows: [ShowModel]
-
-}
-
-extension ShowModel {
-
-    static var testModel: ShowModel {
-        ShowModel(
-            id: "",
-            title: "The Office",
-            showDescription: """
-                The Office is an American mockumentary sitcom television series that depicts the everyday work lives of
-                office employees in the Scranton, Pennsylvania, branch of the fictional Dunder Mifflin Paper Company.
-                It aired on NBC from March 24, 2005, to May 16, 2013, lasting a total of nine seasons.
-            """,
-            imageUrl: "",
-            averageRating: 0,
-            reviewCount: 0
-        )
-    }
+    let meta: MetaModel?
 
 }

@@ -20,6 +20,7 @@ class UserService {
         let params = createParameters(email, password)
         return apiClient.post(path: Constants.NetworkConstants.register, body: params)
     }
+
 }
 
 private extension UserService {

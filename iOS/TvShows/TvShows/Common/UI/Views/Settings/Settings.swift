@@ -3,7 +3,7 @@ import SwiftUI
 struct Settings: View {
 
     @Environment(\.presentationMode) var presentationMode
-    let member: MemberModel = .testModel
+    let member = MemberModel.getMe()
 
     var body: some View {
         VStack(alignment: .center, spacing: 0) {

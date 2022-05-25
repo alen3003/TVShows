@@ -1,3 +1,5 @@
+import Foundation
+
 struct MemberModel: Decodable {
 
     let id: String
@@ -9,5 +11,15 @@ struct MemberModel: Decodable {
 struct MemberWrapper: Decodable {
 
     let user: MemberModel
+
+}
+
+extension MemberModel {
+
+    static func getMe() -> MemberModel {
+        let id = UserDefaults.standard.string(forKey: Constants.UserDefaults.client) ?? ""
+        let email = UserDefaults.standard.string(forKey: Constants.UserDefaults.uid) ?? ""
+        return MemberModel(id: id, email: email, imageUrl: "")
+    }
 
 }

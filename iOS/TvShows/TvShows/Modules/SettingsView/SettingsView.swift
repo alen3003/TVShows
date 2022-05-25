@@ -2,10 +2,8 @@ import SwiftUI
 
 struct SettingsView: View {
 
-    let member = MemberModel(id: "", email: "sebalj.alen@gmail.com", imageUrl: "")
-
     var body: some View {
-        Settings(member: member)
+        Settings()
     }
 
 }

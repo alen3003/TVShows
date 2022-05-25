@@ -18,8 +18,8 @@ class AppModule {
         startApp()
     }
 
-    func popToRoot() {
-        AuthInterceptor.deleteAuthHeaders()
+    func eraseAndPopToRoot() {
+        removeUserDefaultsData()
         startApp()
     }
 
@@ -36,11 +36,18 @@ private extension AppModule {
             let mainTab = MainTabView()
             let viewController = UIHostingController(rootView: mainTab)
             navigationController.navigationBar.prefersLargeTitles = true
-            navigationController.setViewControllers([viewController], animated: false)
+            navigationController.setViewControllers([viewController], animated: true)
         } else {
             let viewController = LoginWireframe().viewController
-            navigationController.setViewControllers([viewController], animated: false)
+            navigationController.setViewControllers([viewController], animated: true)
         }
+    }
+
+    private func removeUserDefaultsData() {
+        UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.token)
+        UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.expiry)
+        UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.client)
+        UserDefaults.standard.set(nil, forKey: Constants.UserDefaults.uid)
     }
 
 }

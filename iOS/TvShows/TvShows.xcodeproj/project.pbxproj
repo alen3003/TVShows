@@ -276,12 +276,12 @@
 			path = Reactive;
 			sourceTree = "<group>";
 		};
-		B4AD1211283D129C0017D9E5 /* Settings */ = {
+		B4AD1211283D129C0017D9E5 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
 				B4AD1212283D12B50017D9E5 /* SettingsView.swift */,
 			);
-			path = Settings;
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		B4AD1214283D13970017D9E5 /* Settings */ = {
@@ -420,7 +420,7 @@
 				B41E479928351A2C004B5F59 /* MainTab */,
 				B4C185BA282BEF1200787006 /* Shows */,
 				B4638BFD28326424003D00C0 /* ShowDetails */,
-				B4AD1211283D129C0017D9E5 /* Settings */,
+				B4AD1211283D129C0017D9E5 /* SettingsView */,
 			);
 			path = Modules;
 			sourceTree = "<group>";

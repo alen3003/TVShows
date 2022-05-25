@@ -21,9 +21,15 @@ struct MainTabView: View {
         .navigationTitle(title)
         .toolbar {
             Image(with: .user)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 50, maxHeight: 50)
                 .onTapGesture {
                     appRouter.selectedSettings = true
                 }
+        }
+        .sheet(isPresented: $appRouter.selectedSettings) {
+            SettingsView()
         }
     }
 

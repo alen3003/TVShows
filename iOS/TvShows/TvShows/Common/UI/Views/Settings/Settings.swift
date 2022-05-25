@@ -2,28 +2,39 @@ import SwiftUI
 
 struct Settings: View {
 
-    let member: MemberModel
+    @Environment(\.presentationMode) var presentationMode
+    let member: MemberModel = .testModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 25) {
-            Text(member.email)
-                .font(.system(size: 17, weight: .medium))
+        VStack(alignment: .center, spacing: 0) {
+            Text("My Account")
                 .foregroundColor(.black)
+                .font(.system(size: 17, weight: .semibold))
+                .frame(maxWidth: .infinity, maxHeight: 50)
 
-            userProfileView
+            VStack(alignment: .leading, spacing: 25) {
+                Text(member.email)
+                    .font(.system(size: 17, weight: .medium))
+                    .foregroundColor(.black)
 
-            Button("Logout") {
-                AppModule.shared.popToRoot()
+                userProfileView
+
+                Button("Logout") {
+                    presentationMode.wrappedValue.dismiss()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        AppModule.shared.eraseAndPopToRoot()
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 48)
+                .background(Color(.backgroundViolet))
+                .foregroundColor(.white)
+                .cornerRadius(24)
+
+                Spacer()
             }
-            .frame(maxWidth: .infinity)
-            .frame(height: 48)
-            .background(Color(.backgroundViolet))
-            .foregroundColor(.white)
-            .cornerRadius(24)
-
-            Spacer()
+            .padding()
         }
-        .padding()
     }
 
     @ViewBuilder
@@ -41,6 +52,6 @@ struct Settings: View {
 
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
-        Settings(member: .testModel)
+        Settings()
     }
 }

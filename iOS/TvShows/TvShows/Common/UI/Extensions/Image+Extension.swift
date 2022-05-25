@@ -2,9 +2,7 @@ import SwiftUI
 
 extension Image {
 
-    init?(with bundleImage: BundleImage?) {
-        guard let bundleImage = bundleImage else { return nil }
-
+    init(with bundleImage: BundleImage) {
         self.init(bundleImage.rawValue)
     }
 

@@ -34,6 +34,6 @@ struct Review: View {
 
 struct Review_Previews: PreviewProvider {
     static var previews: some View {
-        Review(review: ReviewModel.testModel)
+        Review(review: .testModel)
     }
 }

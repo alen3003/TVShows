@@ -3,6 +3,7 @@ import SwiftUI
 struct MainTabView: View {
 
     @State var title = ShowsType.shows.title
+    @State private var selectedSettings = false
 
     var body: some View {
         TabView(selection: $title) {
@@ -20,6 +21,15 @@ struct MainTabView: View {
         .navigationTitle(title)
         .toolbar {
             Image(with: .user)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 50, maxHeight: 50)
+                .onTapGesture {
+                    selectedSettings = true
+                }
+        }
+        .sheet(isPresented: $selectedSettings) {
+            SettingsView()
         }
     }
 

@@ -353,14 +353,6 @@
 			path = Shows;
 			sourceTree = "<group>";
 		};
-		B4C185C6282BF73E00787006 /* SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				B4C185C7282BF75900787006 /* ImageView.swift */,
-			);
-			path = SwiftUI;
-			sourceTree = "<group>";
-		};
 		B4C185E1282E691800787006 /* RxSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,7 +464,7 @@
 			children = (
 				B40C5A69282294870061E512 /* CustomView.swift */,
 				B40C5A8B2822CB540061E512 /* DividerView.swift */,
-				B4C185C6282BF73E00787006 /* SwiftUI */,
+				B4C185C7282BF75900787006 /* ImageView.swift */,
 				B4562BB82823BA5C00BDD33E /* Buttons */,
 				B40C5A902822D0550061E512 /* TextFields */,
 				B4AF9EC028254BAF0042BA4F /* TransientView */,

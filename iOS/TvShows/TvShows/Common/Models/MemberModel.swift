@@ -16,9 +16,14 @@ struct MemberWrapper: Decodable {
 
 extension MemberModel {
 
-    static func getMe() -> MemberModel {
-        let id = UserDefaults.standard.string(forKey: Constants.UserDefaults.client) ?? ""
-        let email = UserDefaults.standard.string(forKey: Constants.UserDefaults.uid) ?? ""
+    static func getMe() -> MemberModel? {
+        guard
+            let id = UserDefaults.standard.string(forKey: Constants.UserDefaults.client),
+            let email = UserDefaults.standard.string(forKey: Constants.UserDefaults.uid)
+        else {
+            return nil
+        }
+
         return MemberModel(id: id, email: email, imageUrl: "")
     }
 

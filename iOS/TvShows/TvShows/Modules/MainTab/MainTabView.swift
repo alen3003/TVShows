@@ -3,7 +3,7 @@ import SwiftUI
 struct MainTabView: View {
 
     @State var title = ShowsType.shows.title
-    @StateObject var appRouter = AppRouter()
+    @State private var selectedSettings = false
 
     var body: some View {
         TabView(selection: $title) {
@@ -25,10 +25,10 @@ struct MainTabView: View {
                 .scaledToFit()
                 .frame(maxWidth: 50, maxHeight: 50)
                 .onTapGesture {
-                    appRouter.selectedSettings = true
+                    selectedSettings = true
                 }
         }
-        .sheet(isPresented: $appRouter.selectedSettings) {
+        .sheet(isPresented: $selectedSettings) {
             SettingsView()
         }
     }

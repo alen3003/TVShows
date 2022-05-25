@@ -28,7 +28,7 @@ class AppModule {
 private extension AppModule {
 
     var shouldShowHome: Bool {
-        UserDefaults.standard.string(forKey: Constants.UserDefaults.token) != nil
+        MemberModel.getMe() != nil
     }
 
     private func startApp() {

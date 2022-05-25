@@ -13,7 +13,7 @@ struct Settings: View {
                 .frame(maxWidth: .infinity, maxHeight: 50)
 
             VStack(alignment: .leading, spacing: 25) {
-                Text(member.email)
+                Text(member?.email ?? "")
                     .font(.system(size: 17, weight: .medium))
                     .foregroundColor(.black)
 
@@ -45,7 +45,7 @@ struct Settings: View {
     @ViewBuilder
     var userProfileView: some View {
         HStack(alignment: .center) {
-            ImageView(url: member.imageUrl, backgroundImage: .userFilled)
+            ImageView(url: member?.imageUrl, backgroundImage: .userFilled)
                 .frame(width: 100, height: 100)
             Button("Change Profile Photo") {
             }

@@ -34,7 +34,7 @@ private extension Publisher where Output == ShowWrapper, Failure == Error {
 
     func handle(with paginator: PaginatedResult) -> SingleCombine<ShowWrapper, Error> {
         handleEvents(receiveOutput: { showWrapper in
-            paginator.setShouldFetchNextPage(showWrapper.shows.count == showWrapper.meta?.pagination.items)
+            paginator.setShouldFetchNextPage(showWrapper.meta?.pagination.page != showWrapper.meta?.pagination.pages)
             paginator.increaseCurrentPage()
         })
         .asSingle()

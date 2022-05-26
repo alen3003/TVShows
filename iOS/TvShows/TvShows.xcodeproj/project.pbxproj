@@ -39,6 +39,7 @@
 		B4638BFF28326445003D00C0 /* ShowDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4638BFE28326445003D00C0 /* ShowDetailsView.swift */; };
 		B4638C022832739A003D00C0 /* ShowDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4638C012832739A003D00C0 /* ShowDetails.swift */; };
 		B4638C0428327960003D00C0 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4638C0328327960003D00C0 /* AppRouter.swift */; };
+		B47BE669283FC125005A01CC /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B47BE668283FC125005A01CC /* SnapshotTesting */; };
 		B48BE3A728367A5600C90940 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BE3A628367A5600C90940 /* Review.swift */; };
 		B48BE3A928367A9B00C90940 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BE3A828367A9B00C90940 /* ReviewModel.swift */; };
 		B48BE3AB2836842400C90940 /* ShowDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BE3AA2836842400C90940 /* ShowDetailsViewModel.swift */; };
@@ -161,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B47BE669283FC125005A01CC /* SnapshotTesting in Frameworks */,
 				B4C185C5282BF6A900787006 /* Kingfisher in Frameworks */,
 				B40C5A5828226B850061E512 /* RxSwift in Frameworks */,
 				B40C5A5628226B850061E512 /* RxRelay in Frameworks */,
@@ -248,6 +250,13 @@
 				B4638C012832739A003D00C0 /* ShowDetails.swift */,
 			);
 			path = ShowDetails;
+			sourceTree = "<group>";
+		};
+		B47BE66A283FC182005A01CC /* SnapshotTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SnapshotTests;
 			sourceTree = "<group>";
 		};
 		B48BE3A428367A2500C90940 /* Stars */ = {
@@ -512,6 +521,7 @@
 				B4D01B4528216F1F00A2B6C2 /* Application */,
 				B4D01B4628216F2600A2B6C2 /* Common */,
 				B4D01B4728216F2C00A2B6C2 /* Modules */,
+				B47BE66A283FC182005A01CC /* SnapshotTests */,
 				B4D01B492821707A00A2B6C2 /* Resources */,
 				B4D01B4A2821708800A2B6C2 /* Supporting Files */,
 			);
@@ -566,6 +576,7 @@
 				B40C5A5528226B850061E512 /* RxRelay */,
 				B40C5A5728226B850061E512 /* RxSwift */,
 				B4C185C4282BF6A900787006 /* Kingfisher */,
+				B47BE668283FC125005A01CC /* SnapshotTesting */,
 			);
 			productName = TvShows;
 			productReference = B4D4773028215428001616C4 /* TvShows.app */;
@@ -598,6 +609,7 @@
 			packageReferences = (
 				B40C5A5228226B850061E512 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				B4C185C3282BF6A900787006 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B47BE667283FC125005A01CC /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = B4D4773128215428001616C4 /* Products */;
 			projectDirPath = "";
@@ -932,6 +944,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		B47BE667283FC125005A01CC /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		B4C185C3282BF6A900787006 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -957,6 +977,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B40C5A5228226B850061E512 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		B47BE668283FC125005A01CC /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B47BE667283FC125005A01CC /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 		B4C185C4282BF6A900787006 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
